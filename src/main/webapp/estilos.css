@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+.padrao {background: silver; 
+		text-align: center; 
+		font: 20pt arial;
+		}
+a {text-decoration: none;}
+li {display: inline;}
+li a:hover {background: blue; 
+			color: white;
+			text-decoration: none;
+			}
+
+div, input, select, tr {
+	font: 15pt arial;
+	}
+	
+
+.navbar{
+	background-color: #1C1B21;
+}
+
+.nav-item {
+    margin: 10 20px;
+}
