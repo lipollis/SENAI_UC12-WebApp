@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
+<%@ page import="entities.Vagas" %>
+<%@ page import="dao.VagasDaoImpl" %>
+<%@ page import="dao.ConectaBD" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +33,41 @@
 
 
 <body>
+<%
+VagasDaoImpl vdi = new VagasDaoImpl();
+Vagas v = null;
+int id = 0;
+
+try{
+	id = Integer.parseInt(request.getParameter("id"));
+	v = vdi.Buscar(id);
+	if(v.getId()<0 || v == null){
+		response.sendRedirect("./emp_020.jsp");
+	}
+} catch(Exception e){}
+
+try{
+	String gravar=request.getParameter("descricao_line");	
+	if(gravar!=null || gravar.equals("")==false){
+		v = new Vagas();
+		v.setDescricao_cc(request.getParameter("descricao_line"));
+		v.setReq_obrigatorios_cc(request.getParameter("req_obrigatorios_line"));
+		v.setReq_desejaveis_cc(request.getParameter("req_desejaveis_line"));
+		v.setRemuneracao_cc(request.getParameter("remuneracao_line"));
+		v.setBeneficios_cc(request.getParameter("beneficios_line"));
+		v.setLocal_trabalho_cc(request.getParameter("local_trabalho_line"));
+		v.setAberta_cc(request.getParameter("aberta_line"));
+		v.setId(id);
+		
+		vdi.Alterar(v);
+		response.sendRedirect("./emp_020.jsp");
+	}
+	}catch(Exception e){	
+		out.println("Erro em Editar JSP");	}
+	finally{ }
+%>
+
+
 <div align=center><h1>Sistema de Controle de Vagas de Emprego</h1></div>
 <div align=center><h3>Alteração</h3></div>
 <br>
@@ -36,43 +75,56 @@
 
 <form action="emp_021-1.jsp" method="post">
 
-<table>
-<tr><td>Id vaga</td>
-<td><% %></td></tr>
-
-<tr><td>Descrição</td>
-<td><input type="text" name="dsc" required maxlength=45></td></tr>
-
-<tr><td>Requisitos Obrigatórios</td>
-<td><input type="text" name="rob" required maxlength=45></td></tr>
-
-<tr><td>Requisitos Desejáveis</td>
-<td><input type="text" name="rde" maxlength=45></td></tr>
-
-<tr><td>Remuneração</td>
-<td><input type="text" name="rem" required class="mask-real" size=8
-style="text-align: right"></td></tr>
-
-<tr>
-	<td>Vaga</td>
-	<td><input name="aberta" id="radio-choice-1a" value="1" type="radio"/>
-	<label for="radio-choice-1a">Aberta</label></td>
-	<td><input name="aberta" id="radio-choice-1b" value="0" type="radio"/>
-	<label for="radio-choice-1b">Encerrada</label></td>
-</tr>
-
-<tr><td>Benefícios</td>
-<td><input type="text" name="ben" required maxlength=45></td></tr>
-
-<tr><td>Local de Trabalho</td>
-<td><input type="text" name="ltr" required maxlength=45></td></tr>
-
-<tr><td colspan=2>&nbsp;</td></tr>
-
-<tr><th colspan=2><input type="submit" value="Enviar"></th></tr>
+<table align="center">
+	<tr><td>Id vaga</td>
+		<td><input type="text" name="id_line" required maxlength=45></td></tr>
+	
+	<tr><td>Descrição</td>
+		<td><input type="text" name="descricao_line" required maxlength=45></td></tr>
+	
+	<tr><td>Requisitos Obrigatórios</td>
+		<td><input type="text" name="req_obrigatorios_line" required maxlength=45></td></tr>
+	
+	<tr><td>Requisitos Desejáveis</td>
+		<td><input type="text" name="req_desejaveis_line" maxlength=45></td></tr>
+	
+	<tr><td>Remuneração</td>
+		<td><input type="text" name="remuneracao_line" required class="mask-real" size=8
+	style="text-align: right"></td></tr>
+	
+	<tr><td>Benefícios</td>
+		<td><input type="text" name="beneficios_line" required maxlength=45></td></tr>
+	
+	<tr><td>Local de Trabalho</td>
+		<td><input type="text" name="local_trabalho_line" required maxlength=45></td></tr>
+	
+		<tr><td>
+			<td><fieldset data-role="controlgroup" id="radio-1" >
+				<legend></legend>
+				<input name="aberta_line" id="radio-choice-1a" value="1" type="radio"/>
+				<label for="radio-choice-1a">Vaga aberta</label>
+				<input name="aberta_line" id="radio-choice-1b" value="0" type="radio"/>
+				<label for="radio-choice-1b">Vaga encerrada</label>
+			</fieldset></td>
+		</td></tr>
+	
+	<tr><td colspan=2>&nbsp;</td></tr>
+	
+	<tr><th colspan=2><input type="submit" value="Enviar"></th></tr>
 </table>
 
 </form>
+
+<script>
+	document.getElementsByName("id_line")[0].value="<%=v.getId()%>";
+	document.getElementsByName("descricao_line")[0].value="<%=v.getDescricao_cc()%>";
+	document.getElementsByName("req_obrigatorios_line")[0].value="<%=v.getReq_obrigatorios_cc()%>";
+	document.getElementsByName("req_desejaveis_line")[0].value="<%=v.getReq_desejaveis_cc()%>";
+	document.getElementsByName("remuneracao_line")[0].value="<%=v.getRemuneracao_cc()%>";
+	document.getElementsByName("beneficios_line")[0].value="<%=v.getBeneficios_cc() %>";
+	document.getElementsByName("local_trabalho_line")[0].value="<%=v.getLocal_trabalho_cc()%>";
+	document.getElementsByName("aberta_line")[0].value="<%=v.getAberta_cc()%>";
+</script>
 
 </div>
 </body>

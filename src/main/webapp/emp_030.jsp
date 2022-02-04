@@ -1,57 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.text.DecimalFormat"%>
-<%@ page import="dao.ConectaBD"%>
+
+<%@ page import="entities.Vagas" %>
+<%@ page import="dao.VagasDaoImpl" %>
+<%@ page import="dao.ConectaBD" %>
 
 
 <%
-// esse l não vem de lugar algum
-//int l = Integer.parseInt(request.getParameter("lista"));
 DecimalFormat df = new DecimalFormat("#,##0.00");
-String sql;
-String titulo;
-/* if (l == 1) {
-	sql = "select * from vagas where aberta = 1";
-	titulo = "Lista de vagas de emprego em aberto";
-} else {
-	if (l == 2) {
-		sql = "select * from vagas where aberta = 0";
-		titulo = "Lista de vagas de emprego encerradas";
-	} else {
-		sql = "select * from vagas";
-		titulo = "Lista geral de vagas de emprego";
+
+VagasDaoImpl vdi = new VagasDaoImpl();
+try{
+	int lista = Integer.parseInt(request.getParameter("lista"));
+	if (lista == 0){
+		// vaga encerrada
+		out.println(vdi.Listar(0));
+	} else if (lista == 1){
+		// vaga aberta
+		out.println(vdi.Listar(1));
+	} else{
+		out.println(vdi.Listar(2));
 	}
-} 
-*/
-
-// tirei de dentro do if
-sql = "select * from vagas where aberta = 1";
-titulo = "Lista de vagas de emprego em aberto";
-
+} catch(Exception e){
+	out.println(vdi.Listar(2));
+}
 
 try {
 	ConectaBD cbd = new ConectaBD();
 	Connection conn = cbd.Conectar();
-	sql = "select * from vagas where aberta = 1";
+	String sql = "SELECT * FROM vagas WHERE aberta = 1";
 	Statement st = conn.createStatement();
 	ResultSet rs = st.executeQuery(sql);
-
-	if (rs.next()) {
-		Integer id = rs.getInt("id");
-		String descricao = rs.getString("descricao");
-		String req_obrigatorios = rs.getString("req_obrigatorios");
-		String req_desejaveis = rs.getString("req_desejaveis");
-		Float remuneracao = rs.getFloat("remuneracao");
-		Integer aberta = rs.getInt("aberta");
-		String beneficios = rs.getString("beneficios");
-		String local_trabalho = rs.getString("local_trabalho");
-
-		rs.close();
-		st.close();
-		String Sql = "select * from vagas";
-		st = conn.createStatement();
-		rs = st.executeQuery(Sql);
+	
+	if(rs.next())
+		{
+			Integer id =rs.getInt("id");
+			String descricao =rs.getString("descricao");
+			String req_obrigatorios =rs.getString("req_obrigatorios");
+			String req_desejaveis =rs.getString("req_desejaveis");
+			String remuneracao =rs.getString("remuneracao");
+			String beneficios =rs.getString("beneficios");
+			String local_trabalho =rs.getString("local_trabalho");
+			String aberta =rs.getString("aberta");
+		
+		 	rs.close(); 
+	 		st.close();
+		   	String Sql = "SELECT * FROM vagas";
+		   	st = conn.createStatement();
+		   	rs = st.executeQuery(Sql);
 %>
 
 
@@ -60,6 +58,9 @@ try {
 <head>
 
 <meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
 <title>Sistema de Controle de Vagas de Emprego</title>
 <link rel="stylesheet" type="text/css" href="estilos.css">
 
@@ -67,69 +68,71 @@ try {
 
 
 <body>
+	<div align=center><h1>Lista de vagas de emprego em aberto</h1></div>
 
-	<table>
-		<caption class="e02"><%=titulo%></caption>
+<table align="center">
+	<tr class="e01">
+		<th>Id Vaga</th>
+		<th>Descrição</th>
+		<th>Req.Obrigatórios</th>
+		<th>Req.Desejáveis</th>
+		<th>Remuneração</th>
+		<th>Aberta</th>
+		<th>Benefícios</th>
+		<th>Local de Trabalho</th>
+		<th>Alteração</th>
+		<th>Exclusão</th>
+	</tr>
 
-		<tr class="e01">
-			<th>Id Vaga</th>
-			<th>Descrição</th>
-			<th>Req.Obrigatórios</th>
-			<th>Req.Desejáveis</th>
-			<th>Remuneração</th>
-			<th>Aberta</th>
-			<th>Benefícios</th>
-			<th>Local de Trabalho</th>
-		</tr>
+<%
+int alt = 0;
+while(rs.next())
+{
+if(alt == 0) {%>
 
-		<%
-		int alt = 0;
-		while (rs.next()) {
-			if (alt == 0) {
-		%>
+	<tr bgcolor=snow class="e01">
 
-		<tr bgcolor=snow class="e01">
+	<%alt = 1;}
+	else
+	{%>
 
-			<%
-			alt = 1;
-			} else {
-			%>
-		
-		<tr bgcolor=ivory class="e01">
+	<tr bgcolor=ivory class="e01">
+		<%alt = 0;}%>
+		<td><%=rs.getInt("id")%></td>
+		<td><%=rs.getString("descricao")%></td>
+		<td><%=rs.getString("req_obrigatorios")%></td>
+		<td><%=rs.getString("req_desejaveis")%></td>
+		<td style="text-align: right;"><%=df.format(rs.getString("remuneracao"))%></td>
+		<td><%=rs.getString("beneficios")%></td>
+		<td><%=rs.getString("local_trabalho")%></td>
+		<td><%=rs.getString("aberta")%></td>
+	</tr>
+<%
+}
+} // fecha while
+	rs.close();
+	st.close();
+	conn.close();
+}catch(Exception e){
+	out.println("Ocorreu uma exceção - " + e.getMessage());
+	}
+%>
 
-			<%
-			alt = 0;
-			}
-			%>
-			<td><%=rs.getInt("id")%></td>
-			<td><%=rs.getString("descricao")%></td>
-			<td><%=rs.getString("req_obrigatorios")%></td>
-			<td><%=rs.getString("req_desejaveis")%></td>
-			<td style="text-align: right;"><%=df.format(rs.getFloat("remuneracao"))%></td>
-			<td><%=rs.getInt("aberta")%></td>
-			<td><%=rs.getString("beneficios")%></td>
-			<td><%=rs.getString("local_trabalho")%></td>
-		</tr>
-		<%
-		}
-		} // fecha while
-		rs.close();
-		st.close();
-		conn.close();
-		} // fecha try
-		catch (Exception e) {
-		out.println("Ocorreu uma exceção - " + e.getMessage());
-		}
-		%>
+<tr><th colspan=10>
+<form action="index.jsp" method="get">
+<input type="submit" value="Voltar">
 
-		<tr>
-			<th colspan=10>
-				<form action="index.jsp" method="get">
-					<input type="submit" value="Voltar">
+</form>
+</th></tr>
+</table>
 
-				</form>
-			</th>
-		</tr>
-	</table>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+
+//function myalert() {
+//    alert("Confirma a exclusão?.\n " );
+}
+
+</script>
+
 </body>
 </html>

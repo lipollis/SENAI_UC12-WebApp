@@ -3,6 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-2.0.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <meta charset="UTF-8">
 
 <title>Sistema de Controle de Vagas de Emprego</title>
@@ -32,30 +36,44 @@
 
 <form action="emp_011.jsp" method="post">
 
-<table>
-<tr><td>Descrição</td>
-<td><input type="text" name="dsc" required maxlength=45></td></tr>
-
-<tr><td>Requisitos Obrigatórios</td>
-<td><input type="text" name="rob" required maxlength=45></td></tr>
-
-<tr><td>Requisitos Desejáveis</td>
-<td><input type="text" name="rde" maxlength=45></td></tr>
-
-<tr><td>Remuneração</td>
-<td><input type="text" name="rem" required class="mask-real" size=8
-style="text-align: right"></td></tr>
-
-<tr><td>Benefícios</td>
-<td><input type="text" name="ben" required maxlength=45></td></tr>
-
-<tr><td>Local de Trabalho</td>
-<td><input type="text" name="ltr" required maxlength=45></td></tr>
-
-<tr><td colspan=2>&nbsp;</td></tr>
-
-<tr><th colspan=2><input type="submit" value="Enviar"></th></tr>
-</table>
+	<table align="center">
+		<tr><td>ID</td>
+			<td><input type="number" name="id_line" value="" disabled ></td></tr>
+			
+			
+		<tr><td>Descrição</td>
+			<td><input type="text" name="descricao_line" required maxlength=45></td></tr>
+		
+		<tr><td>Requisitos Obrigatórios</td>
+			<td><input type="text" name="req_obrigatorios_line" required maxlength=45></td></tr>
+		
+		<tr><td>Requisitos Desejáveis</td>
+			<td><input type="text" name="req_desejaveis_line" maxlength=45></td></tr>
+		
+		<tr><td>Remuneração</td>
+			<td><input type="text" name="remuneracao_line" required class="mask-real" size=8
+		style="text-align: right"></td></tr>
+		
+		<tr><td>Benefícios</td>
+			<td><input type="text" name="beneficios_line" required maxlength=45></td></tr>
+		
+		<tr><td>Local de Trabalho</td>
+			<td><input type="text" name="local_trabalho_line" required maxlength=45></td></tr>
+		
+		<tr><td>
+			<td><fieldset data-role="controlgroup" id="radio-1" >
+				<legend></legend>
+				<input name="aberta_line" id="radio-choice-1a" value="1" type="radio"/>
+				<label for="radio-choice-1a">Vaga aberta</label>
+				<input name="aberta_line" id="radio-choice-1b" value="0" type="radio"/>
+				<label for="radio-choice-1b">Vaga encerrada</label>
+			</fieldset></td>
+		</td></tr>
+		
+		<tr><td colspan=2>&nbsp;</td></tr>
+		
+		<tr><th colspan=2><input type="submit" value="Enviar"></th></tr>
+	</table>
 
 </form>
 
