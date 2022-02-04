@@ -5,11 +5,11 @@ pageEncoding="utf-8"%>
 <%@ page import="dao.ConectaBD" %>
 <%
 
-//int id = Integer.parseInt(request.getParameter("id_line"));
-String dc = request.getParameter("descricao_line");
-String ro = request.getParameter("req_obrigatorios_line");
-String rd = request.getParameter("req_desejaveis_line");
-String rex = request.getParameter("remuneracao_line");
+//int id = Integer.parseInt(request.getParameter("id"));
+String dc = request.getParameter("descricao");
+String ro = request.getParameter("req_obrigatorios");
+String rd = request.getParameter("req_desejaveis");
+String rex = request.getParameter("remuneracao");
 /*
 // converte string valor para float
 String vx = rex;
@@ -17,9 +17,9 @@ vx = vx.replace(".","");
 vx = vx.replace(",",".");
 float vr = Float.parseFloat(vx);
 */
-String be = request.getParameter("beneficios_line");
-String lt = request.getParameter("local_trabalho_line");
-String ab = request.getParameter("aberta_line");
+String be = request.getParameter("beneficios");
+String lt = request.getParameter("local_trabalho");
+String ab = request.getParameter("aberta");
 
 //---- Back-End -----------------------
 

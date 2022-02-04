@@ -38,34 +38,34 @@
 
 	<table align="center">
 		<tr><td>ID</td>
-			<td><input type="number" name="id_line" value="" disabled ></td></tr>
+			<td><input type="number" name="id" value="" disabled ></td></tr>
 			
 			
 		<tr><td>Descrição</td>
-			<td><input type="text" name="descricao_line" required maxlength=45></td></tr>
+			<td><input type="text" name="descricao" required maxlength=45></td></tr>
 		
 		<tr><td>Requisitos Obrigatórios</td>
-			<td><input type="text" name="req_obrigatorios_line" required maxlength=45></td></tr>
+			<td><input type="text" name="req_obrigatorios" required maxlength=45></td></tr>
 		
 		<tr><td>Requisitos Desejáveis</td>
-			<td><input type="text" name="req_desejaveis_line" maxlength=45></td></tr>
+			<td><input type="text" name="req_desejaveis" maxlength=45></td></tr>
 		
 		<tr><td>Remuneração</td>
-			<td><input type="text" name="remuneracao_line" required class="mask-real" size=8
+			<td><input type="text" name="remuneracao" required class="mask-real" size=8
 		style="text-align: right"></td></tr>
 		
 		<tr><td>Benefícios</td>
-			<td><input type="text" name="beneficios_line" required maxlength=45></td></tr>
+			<td><input type="text" name="beneficios" required maxlength=45></td></tr>
 		
 		<tr><td>Local de Trabalho</td>
-			<td><input type="text" name="local_trabalho_line" required maxlength=45></td></tr>
+			<td><input type="text" name="local_trabalho" required maxlength=45></td></tr>
 		
 		<tr><td>
 			<td><fieldset data-role="controlgroup" id="radio-1" >
 				<legend></legend>
-				<input name="aberta_line" id="radio-choice-1a" value="1" type="radio"/>
+				<input name="aberta" id="radio-choice-1a" value="1" type="radio"/>
 				<label for="radio-choice-1a">Vaga aberta</label>
-				<input name="aberta_line" id="radio-choice-1b" value="0" type="radio"/>
+				<input name="aberta" id="radio-choice-1b" value="0" type="radio"/>
 				<label for="radio-choice-1b">Vaga encerrada</label>
 			</fieldset></td>
 		</td></tr>

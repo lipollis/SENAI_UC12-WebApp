@@ -40,8 +40,8 @@ public class VagasDaoImpl implements IDao<Vagas>{
             		+ "req_desejaveis,"
             		+ "remuneracao,"
             		+ "beneficios,"
-            		+ "local_trabalho)"
-            		+ "aberta"
+            		+ "local_trabalho,"
+            		+ "aberta)"
                     + "VALUES(?,?,?,?,?,?,?)";
             
             PreparedStatement ps = (PreparedStatement)conn.prepareStatement(sql);
@@ -83,7 +83,7 @@ public class VagasDaoImpl implements IDao<Vagas>{
                     + "req_desejaveis = ?,"
                     + "remuneracao = ?,"
                     + "beneficios = ?,"
-                    + "local_trabalho = ? "
+                    + "local_trabalho = ?, "
                     + "aberta = ?,"
                     + " WHERE id = ?";
             
@@ -166,7 +166,7 @@ public class VagasDaoImpl implements IDao<Vagas>{
 				String local_trabalho_line = rs.getString(7);
 				String aberta_line = rs.getString(8);
 				
-				
+				/*
 				linha = linha + 
 						"<br>"+ 
 						"Codigo:" + id_line + 
@@ -178,7 +178,7 @@ public class VagasDaoImpl implements IDao<Vagas>{
 						"- Local de Trabalho:" + local_trabalho_line +
 						"- Aberta:" + aberta_line +
 						" - <a href='./emp_022.jsp?id= "+id_line+" '> Excluir</a>"+
-						" - <a href='./emp_021.jsp?id= "+id_line+" '> Editar</a>";
+						" - <a href='./emp_021.jsp?id= "+id_line+" '> Editar</a>";*/
 			}
 
 		} catch (Exception e) {
