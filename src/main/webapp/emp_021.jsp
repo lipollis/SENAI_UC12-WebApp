@@ -39,7 +39,7 @@ Vagas v = null;
 int id = 0;
 
 try{
-	id = Integer.parseInt(request.getParameter("id"));
+	id = Integer.parseInt(request.getParameter("id_line"));
 	v = vdi.Buscar(id);
 	if(v.getId()<0 || v == null){
 		response.sendRedirect("./emp_020.jsp");
@@ -50,13 +50,13 @@ try{
 	String gravar=request.getParameter("descricao_line");	
 	if(gravar!=null || gravar.equals("")==false){
 		v = new Vagas();
-		v.setDescricao_cc(request.getParameter("descricao_line"));
-		v.setReq_obrigatorios_cc(request.getParameter("req_obrigatorios_line"));
-		v.setReq_desejaveis_cc(request.getParameter("req_desejaveis_line"));
-		v.setRemuneracao_cc(request.getParameter("remuneracao_line"));
-		v.setBeneficios_cc(request.getParameter("beneficios_line"));
-		v.setLocal_trabalho_cc(request.getParameter("local_trabalho_line"));
-		v.setAberta_cc(request.getParameter("aberta_line"));
+		v.setDescricao(request.getParameter("descricao_line"));
+		v.setReq_obrigatorios(request.getParameter("req_obrigatorios_line"));
+		v.setReq_desejaveis(request.getParameter("req_desejaveis_line"));
+		v.setRemuneracao(request.getParameter("remuneracao_line"));
+		v.setBeneficios(request.getParameter("beneficios_line"));
+		v.setLocal_trabalho(request.getParameter("local_trabalho_line"));
+		v.setAberta(request.getParameter("aberta_line"));
 		v.setId(id);
 		
 		vdi.Alterar(v);
@@ -117,13 +117,13 @@ try{
 
 <script>
 	document.getElementsByName("id_line")[0].value="<%=v.getId()%>";
-	document.getElementsByName("descricao_line")[0].value="<%=v.getDescricao_cc()%>";
-	document.getElementsByName("req_obrigatorios_line")[0].value="<%=v.getReq_obrigatorios_cc()%>";
-	document.getElementsByName("req_desejaveis_line")[0].value="<%=v.getReq_desejaveis_cc()%>";
-	document.getElementsByName("remuneracao_line")[0].value="<%=v.getRemuneracao_cc()%>";
-	document.getElementsByName("beneficios_line")[0].value="<%=v.getBeneficios_cc() %>";
-	document.getElementsByName("local_trabalho_line")[0].value="<%=v.getLocal_trabalho_cc()%>";
-	document.getElementsByName("aberta_line")[0].value="<%=v.getAberta_cc()%>";
+	document.getElementsByName("descricao_line")[0].value="<%=v.getDescricao()%>";
+	document.getElementsByName("req_obrigatorios_line")[0].value="<%=v.getReq_obrigatorios()%>";
+	document.getElementsByName("req_desejaveis_line")[0].value="<%=v.getReq_desejaveis()%>";
+	document.getElementsByName("remuneracao_line")[0].value="<%=v.getRemuneracao()%>";
+	document.getElementsByName("beneficios_line")[0].value="<%=v.getBeneficios() %>";
+	document.getElementsByName("local_trabalho_line")[0].value="<%=v.getLocal_trabalho()%>";
+	document.getElementsByName("aberta_line")[0].value="<%=v.getAberta()%>";
 </script>
 
 </div>

@@ -64,9 +64,9 @@ try {
 		<th>Req.Obrigatórios</th>
 		<th>Req.Desejáveis</th>
 		<th>Remuneração</th>
-		<th>Aberta</th>
 		<th>Benefícios</th>
 		<th>Local de Trabalho</th>
+		<th>Aberta</th>
 		<th>Alteração</th>
 		<th>Exclusão</th>
 	</tr>
@@ -90,7 +90,7 @@ try {
 	<td><%=rs.getString("descricao")%></td>
 	<td><%=rs.getString("req_obrigatorios")%></td>
 	<td><%=rs.getString("req_desejaveis")%></td>
-	<td style="text-align: right;"><%=df.format(rs.getString("remuneracao"))%></td>
+	<td><%=rs.getString("remuneracao") %></td>
 	<td><%=rs.getString("beneficios")%></td>
 	<td><%=rs.getString("local_trabalho")%></td>
 	<td><%=rs.getString("aberta")%></td>

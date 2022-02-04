@@ -29,13 +29,13 @@ try{
 	if(gravar!=null || gravar.equals("")==false)
 	{
 		Vagas v = new Vagas();
-		v.setDescricao_cc(dc);
-		v.setReq_obrigatorios_cc(ro);
-		v.setReq_desejaveis_cc(rd);
-		v.setRemuneracao_cc(rex);
-		v.setBeneficios_cc(be);
-		v.setLocal_trabalho_cc(lt);
-		v.setAberta_cc(ab);
+		v.setDescricao(dc);
+		v.setReq_obrigatorios(ro);
+		v.setReq_desejaveis(rd);
+		v.setRemuneracao(rex);
+		v.setBeneficios(be);
+		v.setLocal_trabalho(lt);
+		v.setAberta(ab);
 
 		VagasDaoImpl vdi = new VagasDaoImpl();
 		vdi.Incluir(v);

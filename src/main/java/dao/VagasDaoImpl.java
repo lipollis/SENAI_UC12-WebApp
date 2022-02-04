@@ -47,13 +47,13 @@ public class VagasDaoImpl implements IDao<Vagas>{
             PreparedStatement ps = (PreparedStatement)conn.prepareStatement(sql);
             
             // inclusao modo objeto PreparedStatement - continuacao
-            ps.setString(1, v.getDescricao_cc());
-			ps.setString(2, v.getReq_obrigatorios_cc()); 
-			ps.setString(3, v.getReq_desejaveis_cc());
-			ps.setString(4, v.getRemuneracao_cc());
-			ps.setString(5, v.getBeneficios_cc());
-			ps.setString(6, v.getLocal_trabalho_cc()); 
-			ps.setString(7, v.getAberta_cc());
+            ps.setString(1, v.getDescricao());
+			ps.setString(2, v.getReq_obrigatorios()); 
+			ps.setString(3, v.getReq_desejaveis());
+			ps.setString(4, v.getRemuneracao());
+			ps.setString(5, v.getBeneficios());
+			ps.setString(6, v.getLocal_trabalho()); 
+			ps.setString(7, v.getAberta());
             ps.execute();
             ps.close();
             conn.close();
@@ -88,13 +88,13 @@ public class VagasDaoImpl implements IDao<Vagas>{
                     + " WHERE id = ?";
             
             PreparedStatement ps = (PreparedStatement)conn.prepareStatement(sql);
-            ps.setString(1, v.getDescricao_cc());
-			ps.setString(2, v.getReq_obrigatorios_cc()); 
-			ps.setString(3, v.getReq_desejaveis_cc());
-			ps.setString(4, v.getRemuneracao_cc());
-			ps.setString(5, v.getBeneficios_cc());
-			ps.setString(6, v.getLocal_trabalho_cc()); 
-			ps.setString(7, v.getAberta_cc());
+            ps.setString(1, v.getDescricao());
+			ps.setString(2, v.getReq_obrigatorios()); 
+			ps.setString(3, v.getReq_desejaveis());
+			ps.setString(4, v.getRemuneracao());
+			ps.setString(5, v.getBeneficios());
+			ps.setString(6, v.getLocal_trabalho()); 
+			ps.setString(7, v.getAberta());
             ps.execute();
             ps.close();
             conn.close();
@@ -205,13 +205,13 @@ public class VagasDaoImpl implements IDao<Vagas>{
 				
 				ResultSet rs = ps.executeQuery();
 				while (rs.next()) {				
-					v.setDescricao_cc(rs.getString(2));
-					v.setReq_obrigatorios_cc(rs.getString(3)); 
-					v.setReq_desejaveis_cc(rs.getString(4));
-					v.setRemuneracao_cc(rs.getString(5));
-					v.setBeneficios_cc(rs.getString(6));
-					v.setLocal_trabalho_cc(rs.getString(7)); 
-					v.setAberta_cc(rs.getString(8));
+					v.setDescricao(rs.getString(2));
+					v.setReq_obrigatorios(rs.getString(3)); 
+					v.setReq_desejaveis(rs.getString(4));
+					v.setRemuneracao(rs.getString(5));
+					v.setBeneficios(rs.getString(6));
+					v.setLocal_trabalho(rs.getString(7)); 
+					v.setAberta(rs.getString(8));
 					v.setId(rs.getInt(1));
 
 				}
