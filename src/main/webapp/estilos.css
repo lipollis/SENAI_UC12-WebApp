@@ -3,6 +3,10 @@ a {
     text-decoration: none;
 }
 
+.espaco{
+	padding: 30px;
+}
+
 li {
     display: inline;
 }
