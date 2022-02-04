@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import dao.ConectaBD;
 
 public class Vagas {
-	// ATRIBUTOS
+    // ATRIBUTOS
     private int id;
     private String descricao;
     private String req_obrigatorios;
@@ -15,8 +15,6 @@ public class Vagas {
     private String aberta;
     private String beneficios;
     private String local_trabalho;
-
-
 
     // GETTER & SETTER
     public int getId() {

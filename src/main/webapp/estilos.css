@@ -1,25 +1,47 @@
 @charset "UTF-8";
+a {
+    text-decoration: none;
+}
 
-.padrao {background: silver; 
-		text-align: center; 
-		font: 20pt arial;
-		}
-a {text-decoration: none;}
-li {display: inline;}
-li a:hover {background: blue; 
-			color: white;
-			text-decoration: none;
-			}
+li {
+    display: inline;
+}
 
-div, input, select, tr {
-	font: 15pt arial;
-	}
-	
+li a:hover {
+    background: blue;
+    color: white;
+    text-decoration: none;
+}
 
-.navbar{
-	background-color: #1C1B21;
+div,
+input,
+select,
+tr {
+    font: 15pt arial;
+}
+
+.div.container-fluid {
+    margin: 3px;
+}
+
+.navbar {
+    background-color: #1C1B21;
+    padding: 20px;
+    margin: 0 auto;
+    letter-spacing: 5px;
 }
 
 .nav-item {
     margin: 10 20px;
+}
+
+a.nav-link {
+    padding: 10px !;
+    margin: 3px !;
+}
+
+th {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
 }
