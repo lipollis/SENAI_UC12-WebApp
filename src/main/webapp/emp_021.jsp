@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
- pageEncoding="UTF-8"%>
- 
+    pageEncoding="UTF-8"%>
+
 <%@ page import="java.sql.*"%>
 <%@ page import="entities.Vagas" %>
 <%@ page import="dao.VagasDaoImpl" %>
@@ -26,19 +26,16 @@
 <!-- ---------------------------------------------------------------------------------------------------       -->
 <%
 DecimalFormat df = new DecimalFormat("#,##0.00");
-
 Integer id_html = Integer.parseInt(request.getParameter("id"));
 String descricao_html = request.getParameter("descricao");
 String req_obrigatorios_html = request.getParameter("req_obrigatorios");
 String req_desejaveis_html = request.getParameter("req_desejaveis");
-
 // CONVERSÃO DE STRING PARA FLOAT
 String remuneracao_html = request.getParameter("remuneracao");
 String vx = remuneracao_html;
 vx = vx.replace(".","");
 vx = vx.replace(",",".");
 float remuneracao_html_conv = Float.parseFloat(vx);
-
 String beneficios_html = request.getParameter("beneficios");
 String local_trabalho_html = request.getParameter("local_trabalho");
 int aberta_html = Integer.parseInt(request.getParameter("aberta"));
@@ -46,7 +43,6 @@ int aberta_html = Integer.parseInt(request.getParameter("aberta"));
 VagasDaoImpl vdi = new VagasDaoImpl();
 Vagas v = null;
 int id = 0;
-
 try{
 	id = Integer.parseInt(request.getParameter("id"));
 	v = vdi.Search(id);

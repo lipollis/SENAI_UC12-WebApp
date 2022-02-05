@@ -33,7 +33,7 @@ public class VagasDaoImpl implements IDao<Vagas> {
 			ConectaBD cbd = new ConectaBD();
 			Connection conn = cbd.Conectar();
 
-			// INCLUS√ÉO DO OBJETO EM PreparedStatement
+			// INCLUS√O DO OBJETO EM PreparedStatement
 			String sql = "INSERT INTO vagas("
 							+ "descricao,"
 							+ "req_obrigatorios,"
@@ -73,7 +73,7 @@ public class VagasDaoImpl implements IDao<Vagas> {
 			ConectaBD cbd = new ConectaBD();
 			Connection conn = cbd.Conectar();
 			
-			// VERIFICA SE A VAGA EST√Å COM STATUS ABERTA OU ENCERRADA
+			// VERIFICA SE A VAGA EST¡ COM STATUS ABERTA OU ENCERRADA
 			String sql = "SELECT * FROM vagas";
 			if (aberta_java == 1) {
 				sql = sql + " WHERE aberta=1";

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html, charset=UTF-8" 
-pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <%@ page import="java.sql.*"%>
 <%@ page import="entities.Vagas" %>
@@ -26,27 +26,22 @@ pageEncoding="UTF-8" %>
 <!-- ---------------------------------------------------------------------------------------------------       -->
 <%
 DecimalFormat df = new DecimalFormat("#,##0.00");
-
 //int id_html = Integer.parseInt(request.getParameter("id"));
 String descricao_html = request.getParameter("descricao");
 String req_obrigatorios_html = request.getParameter("req_obrigatorios");
 String req_desejaveis_html = request.getParameter("req_desejaveis");
-
 // CONVERSÃO DE STRING PARA FLOAT
 String remuneracao_html = request.getParameter("remuneracao");
 String vx = remuneracao_html;
 vx = vx.replace(".","");
 vx = vx.replace(",",".");
 float remuneracao_html_conv = Float.parseFloat(vx);
-
 String beneficios_html = request.getParameter("beneficios");
 String local_trabalho_html = request.getParameter("local_trabalho");
 int aberta_html = Integer.parseInt(request.getParameter("aberta"));
-
 try{
 	String gravar = request.getParameter("descricao");
 	if(gravar!=null || gravar.equals("")==false){
-
 		Vagas v = new Vagas();
 		v.setDescricao_java(descricao_html);
 		v.setReq_obrigatorios_java(req_obrigatorios_html);
@@ -55,7 +50,6 @@ try{
 		v.setBeneficios_java(beneficios_html);
 		v.setLocal_trabalho_java(local_trabalho_html);
 		v.setAberta_java(aberta_html);
-
 		VagasDaoImpl vdi = new VagasDaoImpl();
 		vdi.Create(v);
 		//response.sendRedirect("./emp_020.jsp");

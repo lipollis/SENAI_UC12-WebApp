@@ -17,7 +17,6 @@ public class ConectaBD{
 	/*
     	public String usuario = "root";
 		public String senha = "admin";
-
 		public Connection Conectar() throws Exception {
 		
     	Connection connection = null;

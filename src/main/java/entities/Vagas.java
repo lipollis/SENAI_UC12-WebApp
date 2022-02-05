@@ -84,7 +84,6 @@ public class Vagas {
     /*
     create database empregos;
     use empregos;
-
     create TABLE vagas(
     	id INT PRIMARY KEY AUTO_INCREMENT,
         descricao VARCHAR(45) NOT NULL,

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 
- 
 <%@ page import="java.sql.*"%>
 <%@ page import="entities.Vagas" %>
 <%@ page import="dao.VagasDaoImpl" %>
@@ -26,7 +25,6 @@ pageEncoding="UTF-8"%>
 <!--		BACKEND-->
 <!-- ---------------------------------------------------------------------------------------------------       -->
 <%
-
 int l = Integer.parseInt(request.getParameter("lista"));
 String sql;
 String titulo;
@@ -43,7 +41,6 @@ String titulo;
 		sql = "SELECT * FROM vagas";
 		titulo = "Lista geral de vagas de emprego";
 	}
-
 try {
 	// CONEXAO COM O BANCO DE DADOS
 	ConectaBD cbd = new ConectaBD();

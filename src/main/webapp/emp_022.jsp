@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html, charset=UTF-8" 
-pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
- 
 <%@ page import="java.sql.*"%>
 <%@ page import="entities.Vagas" %>
 <%@ page import="dao.VagasDaoImpl" %>
@@ -28,15 +27,12 @@ pageEncoding="UTF-8" %>
 <%
 DecimalFormat df = new DecimalFormat("#,##0.00");
 int id_html =0;
-
 try{
 	id_html = Integer.parseInt(request.getParameter("id"));
 	VagasDaoImpl vdi = new VagasDaoImpl();
 	vdi.Delete(id_html);
 } catch(Exception e){}
-
 //response.sendRedirect("./emp_020.jsp");
-
 %>
 
 
@@ -66,7 +62,7 @@ try{
 
 	<table align="center">
 		<tr>
-			<th colspan=2 style="color:green">Vaga<% request.getParameter("id"); %> excluída com sucesso.</th>
+			<th colspan=2 style="color:green">Vaga <%=id_html%> excluída com sucesso.</th>
 		</tr>
 	</table>
 	
