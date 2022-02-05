@@ -48,7 +48,7 @@ try {
 
 <a href="./emp_030.jsp?lista=0"> Listar Fechadas</a>
 <a href="./emp_030.jsp?lista=1"> Listar Abertas</a>
-<a href="./emp_030.jsp"> Listar Todas</a>
+<a href="./emp_030.jsp?lista=2"> Listar Todas</a>
 
 
 <!-- ---------------------------------------------------------------------------------------------------       -->
@@ -86,7 +86,7 @@ while(rs.next()) {
 		
 <tr bgcolor=ivory class="e01">
 			<%alt = 0;}%>
-	<td><%=rs.getInt("id")%></td>
+	<td><%int id_teste=rs.getInt("id");%></td>
 	<td><%=rs.getString("descricao")%></td>
 	<td><%=rs.getString("req_obrigatorios")%></td>
 	<td><%=rs.getString("req_desejaveis")%></td>
@@ -94,8 +94,10 @@ while(rs.next()) {
 	<td><%=rs.getString("beneficios")%></td>
 	<td><%=rs.getString("local_trabalho")%></td>
 	<td><%=rs.getInt("aberta")%></td>
-	<td><a href="emp_021.jsp">Alterar</a></td>
-	<td><a href="emp_022.jsp">Excluir</a></td>
+	<td><a href='./emp_021.jsp?id=+"id"'>Alterar</a></td>
+	<td><a href='./emp_022.jsp?id=+"id"'>Excluir</a></td>
+	
+	<td><a href="emp_021.jsp?id="+"<%=id_teste%>">Alterar</a></td>
 </tr>
 <%} // fecha while
 	ps.execute();

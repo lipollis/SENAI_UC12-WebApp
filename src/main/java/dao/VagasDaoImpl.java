@@ -85,7 +85,7 @@ public class VagasDaoImpl implements IDao<Vagas> {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 
-				int id_line = rs.getInt("id");
+				int id = rs.getInt("id");
 				String descricao_line = rs.getString("descricao");
 				String req_obrigatorios_line = rs.getString("descricao");
 				String req_desejaveis_line = rs.getString("req_desejaveis");
@@ -96,7 +96,7 @@ public class VagasDaoImpl implements IDao<Vagas> {
 				
 				linha = linha + 
 						"<br>"+ 
-						"Id vaga:" + id_line + 
+						"Id vaga:" + id + 
 						"- Descricao: " + descricao_line + 
 						"- Requisitos Obrigatorios:" + req_obrigatorios_line +
 						"- Requisitos Desejaveis:" + req_desejaveis_line + 
@@ -104,8 +104,9 @@ public class VagasDaoImpl implements IDao<Vagas> {
 						"- Beneficios: " + beneficios_line + 
 						"- Local de Trabalho:" + local_trabalho_line +
 						"- Aberta:" + aberta_line+
-						" - <a href='./emp_022.jsp?id="+id_line+"'><button>Excluir</button></a>"+
-						" - <a href='./emp_021.jsp?id="+id_line+"'><button>Editar</button></a>";
+						" - <a href='./emp_021.jsp?id="+id+"'><button>Editar</button></a>"+
+						" - <a href='./emp_022.jsp?id="+id+"'><button>Excluir</button></a>";
+						
 		}
 		}catch (Exception e) {
 			System.out.println("Erro ao buscar :" + e);
@@ -164,14 +165,14 @@ public class VagasDaoImpl implements IDao<Vagas> {
 	 * o comando SQL de exclusao de dados (delete) e realiza sua execucao.
 	 */
 	@Override
-	public void Delete(int id_java) {
+	public void Delete(int id) {
 		try {
 			// CONEXAO COM O BANCO DE DADOS
 			ConectaBD cbd = new ConectaBD();
 			Connection conn = cbd.Conectar();
 			
-			String query = "DELETE FROM vagas WHERE id= "+id_java;
-			PreparedStatement ps = (PreparedStatement)conn.prepareStatement(query);
+			String sql = "DELETE FROM vagas WHERE id= "+id;
+			PreparedStatement ps = (PreparedStatement)conn.prepareStatement(sql);
 			ps.execute();
 			ps.close();
 			conn.close();
@@ -183,13 +184,13 @@ public class VagasDaoImpl implements IDao<Vagas> {
 	}
 
 	@Override
-	public Vagas Search(int id_java) {
+	public Vagas Search(int id) {
 		Vagas v = new Vagas();
 		try {
 			ConectaBD cbd = new ConectaBD();
 			Connection conn = cbd.Conectar();
 
-			String sql = "SELECT * FROM vagas WHERE id=" +id_java;
+			String sql = "SELECT * FROM vagas WHERE id=" +id;
 			PreparedStatement ps = (PreparedStatement)conn.prepareStatement(sql);
 		}catch (Exception e) {
 			System.out.println("Erro ao buscar :" + e);

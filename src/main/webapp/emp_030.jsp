@@ -63,7 +63,7 @@ try {
 
 <a href="./emp_030.jsp?lista=0"> Listar Fechadas</a>
 <a href="./emp_030.jsp?lista=1"> Listar Abertas</a>
-<a href="./emp_030.jsp"> Listar Todas</a>
+<a href="./emp_030.jsp?lista=2"> Listar Todas</a>
 
 
 <!-- ---------------------------------------------------------------------------------------------------       -->

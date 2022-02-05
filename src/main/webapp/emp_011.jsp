@@ -26,7 +26,7 @@
 <!-- ---------------------------------------------------------------------------------------------------       -->
 <%
 DecimalFormat df = new DecimalFormat("#,##0.00");
-//int id_html = Integer.parseInt(request.getParameter("id"));
+//int id = Integer.parseInt(request.getParameter("id"));
 String descricao_html = request.getParameter("descricao");
 String req_obrigatorios_html = request.getParameter("req_obrigatorios");
 String req_desejaveis_html = request.getParameter("req_desejaveis");
@@ -39,6 +39,7 @@ float remuneracao_html_conv = Float.parseFloat(vx);
 String beneficios_html = request.getParameter("beneficios");
 String local_trabalho_html = request.getParameter("local_trabalho");
 int aberta_html = Integer.parseInt(request.getParameter("aberta"));
+
 try{
 	String gravar = request.getParameter("descricao");
 	if(gravar!=null || gravar.equals("")==false){
@@ -72,7 +73,7 @@ try{
 
 <a href="./emp_030.jsp?lista=0"> Listar Fechadas</a>
 <a href="./emp_030.jsp?lista=1"> Listar Abertas</a>
-<a href="./emp_030.jsp"> Listar Todas</a>
+<a href="./emp_030.jsp?lista=2"> Listar Todas</a>
 
 
 <!-- ---------------------------------------------------------------------------------------------------       -->

@@ -14,8 +14,8 @@ public interface IDao<T> {
 
     public void Update(T t);
 
-    public void Delete(int id_java);
+    public void Delete(int id);
 
-    public T Search(int id_java); 
+    public T Search(int id); 
 
 }

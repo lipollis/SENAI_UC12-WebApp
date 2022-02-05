@@ -26,7 +26,7 @@
 <!-- ---------------------------------------------------------------------------------------------------       -->
 <%
 DecimalFormat df = new DecimalFormat("#,##0.00");
-Integer id_html = Integer.parseInt(request.getParameter("id"));
+Integer id = Integer.parseInt(request.getParameter("id"));
 String descricao_html = request.getParameter("descricao");
 String req_obrigatorios_html = request.getParameter("req_obrigatorios");
 String req_desejaveis_html = request.getParameter("req_desejaveis");
@@ -39,9 +39,11 @@ float remuneracao_html_conv = Float.parseFloat(vx);
 String beneficios_html = request.getParameter("beneficios");
 String local_trabalho_html = request.getParameter("local_trabalho");
 int aberta_html = Integer.parseInt(request.getParameter("aberta"));
+
 VagasDaoImpl vdi = new VagasDaoImpl();
 Vagas v = null;
-int id = 0;
+id = 0;
+
 try{
 	id = Integer.parseInt(request.getParameter("id"));
 	v = vdi.Search(id);
@@ -61,7 +63,7 @@ try{
 		v.setBeneficios_java(beneficios_html);
 		v.setLocal_trabalho_java(local_trabalho_html);
 		v.setAberta_java(aberta_html);
-		v.setId_java(id_html);
+		v.setId_java(id);
  
 		vdi.Update(v);
 		//response.sendRedirect("./emp_020.jsp");
@@ -84,7 +86,7 @@ try{
 
 <a href="./emp_030.jsp?lista=0"> Listar Fechadas</a>
 <a href="./emp_030.jsp?lista=1"> Listar Abertas</a>
-<a href="./emp_030.jsp"> Listar Todas</a>
+<a href="./emp_030.jsp?lista=2"> Listar Todas</a>
 
 
 <!-- ---------------------------------------------------------------------------------------------------       -->

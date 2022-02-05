@@ -26,11 +26,11 @@
 <!-- ---------------------------------------------------------------------------------------------------       -->
 <%
 DecimalFormat df = new DecimalFormat("#,##0.00");
-int id_html =0;
+int id =0;
 try{
-	id_html = Integer.parseInt(request.getParameter("id"));
+	id = Integer.parseInt(request.getParameter("id"));
 	VagasDaoImpl vdi = new VagasDaoImpl();
-	vdi.Delete(id_html);
+	vdi.Delete(id);
 } catch(Exception e){}
 //response.sendRedirect("./emp_020.jsp");
 %>
@@ -49,7 +49,7 @@ try{
 
 <a href="./emp_030.jsp?lista=0"> Listar Fechadas</a>
 <a href="./emp_030.jsp?lista=1"> Listar Abertas</a>
-<a href="./emp_030.jsp"> Listar Todas</a>
+<a href="./emp_030.jsp?lista=2"> Listar Todas</a>
 
 
 <!-- ---------------------------------------------------------------------------------------------------       -->
@@ -62,7 +62,7 @@ try{
 
 	<table align="center">
 		<tr>
-			<th colspan=2 style="color:green">Vaga <%=id_html%> excluída com sucesso.</th>
+			<th colspan=2 style="color:green">Vaga <%=id%> excluída com sucesso.</th>
 		</tr>
 	</table>
 	
