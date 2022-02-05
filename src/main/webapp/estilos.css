@@ -10,11 +10,16 @@ a {
 li {
     display: inline;
 }
-
+li a {
+	text-align: center;
+	margin: 5px;
+	padding: 10px;
+}
 li a:hover {
     background: blue;
     color: white;
     text-decoration: none;
+    text-align: center;
 }
 
 div,
@@ -43,6 +48,7 @@ a.nav-link {
     padding: 10px !;
     margin: 3px !;
 }
+
 
 th {
     margin: 10px;

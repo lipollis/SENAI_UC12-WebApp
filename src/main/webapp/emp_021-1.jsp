@@ -1,178 +1,139 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
-    <%@ page import="entities.Vagas" %>
-        <%@ page import="dao.VagasDaoImpl" %>
-            <%@ page import="dao.ConectaBD" %>
-                <%
 
-int id = Integer.parseInt(request.getParameter("id"));
-String descricao = request.getParameter("descricao");
-String req_obrigatorios = request.getParameter("req_obrigatorios");
-String req_desejaveis = request.getParameter("req_desejaveis");
-String remuneracao = request.getParameter("remuneracao");
-/*
-// converte string valor para float
-String vx = rex;
+<%@ page import="java.sql.*"%>
+<%@ page import="entities.Vagas" %>
+<%@ page import="dao.VagasDaoImpl" %>
+<%@ page import="dao.ConectaBD" %>
+<%@ page import="java.text.DecimalFormat"%>
+
+ 
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="estilos.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+	<title>Sistema de Controle de Vagas de Emprego</title>
+</head>
+
+<!-- ---------------------------------------------------------------------------------------------------       -->
+<!--		BACKEND-->
+<!-- ---------------------------------------------------------------------------------------------------       -->
+<%
+DecimalFormat df = new DecimalFormat("#,##0.00");
+
+Integer id_html = Integer.parseInt(request.getParameter("id"));
+String descricao_html = request.getParameter("descricao");
+String req_obrigatorios_html = request.getParameter("req_obrigatorios");
+String req_desejaveis_html = request.getParameter("req_desejaveis");
+
+// CONVERSÃO DE STRING PARA FLOAT
+String remuneracao_html = request.getParameter("remuneracao");
+String vx = remuneracao_html;
 vx = vx.replace(".","");
 vx = vx.replace(",",".");
-float vr = Float.parseFloat(vx);
-*/
-String beneficios = request.getParameter("beneficios");
-String local_trabalho = request.getParameter("local_trabalho");
-String aberta = request.getParameter("aberta");
+float remuneracao_html_conv = Float.parseFloat(vx);
 
-//---- Back-End -----------------------
+String beneficios_html = request.getParameter("beneficios");
+String local_trabalho_html = request.getParameter("local_trabalho");
+int aberta_html = Integer.parseInt(request.getParameter("aberta"));
+
+VagasDaoImpl vdi = new VagasDaoImpl();
+Vagas v = null;
+int id = 0;
 
 try{
+	id = Integer.parseInt(request.getParameter("id"));
+	v = vdi.Search(id);
+	if(v.getId_java()<0 || v==null){
+		response.sendRedirect("./emp_020.jsp");
+	}} catch(Exception e){}
 	
-	String gravar= request.getParameter("descricao");	
+try{
+	String gravar=request.getParameter("descricao");	
 	if(gravar!=null || gravar.equals("")==false)
 	{
-		Vagas v = new Vagas();
-		v.setDescricao(descricao);
-		v.setReq_obrigatorios(req_obrigatorios);
-		v.setReq_desejaveis(req_desejaveis);
-		v.setRemuneracao(remuneracao);
-		v.setBeneficios(beneficios);
-		v.setLocal_trabalho(local_trabalho);
-		v.setAberta(aberta);
-
-		VagasDaoImpl vdi = new VagasDaoImpl();
-		vdi.Incluir(v);
-	}
-	}catch(Exception e){		}
+		v = new Vagas();
+		v.setDescricao_java(descricao_html);
+		v.setReq_obrigatorios_java(req_obrigatorios_html);
+		v.setReq_desejaveis_java(req_desejaveis_html);
+		v.setRemuneracao_java(remuneracao_html_conv);
+		v.setBeneficios_java(beneficios_html);
+		v.setLocal_trabalho_java(local_trabalho_html);
+		v.setAberta_java(aberta_html);
+		v.setId_java(id_html);
+ 
+		vdi.Update(v);
+		//response.sendRedirect("./emp_020.jsp");
+		}
+	} catch(Exception e){ out.println("Erro em atualizar JSP"); }
 	finally{ }
-
 %>
 
 
-                    <!DOCTYPE html>
-                    <html>
 
-                    <head>
-                        <meta name="viewport" content="width=device-width, initial-scale=1">
-                        <meta charset="UTF-8">
-                        <link rel="stylesheet" type="text/css" href="estilos.css">
-                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-                        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<body>
 
-                        <title>Sistema de Controle de Vagas de Emprego</title>
-                    </head>
-                    <!-- ---------------------------------------------------------------------------------------------------       -->
-                    <!--NAVBAR-->
-                    <!-- ---------------------------------------------------------------------------------------------------       -->
-
-                    <section class="btn-group btn-group-vertical gap-3 d-flex ">
-                        <div class="position-relative btn btn-dark ">
-                            <div class="position-relative top-0 start-50 translate-middle-x justify-content-evenly align-items-center">
-                                <ul class="btn-group gap-3">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="emp_010.jsp">Cadastrar</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="emp_020.jsp">Alteração/Exclusão</a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Listar vagas</a>
-                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a class="dropdown-item" href="emp_030.jsp?lista=1" name="lista" value="1">Lista de vagas abertas</a></li>
-                                            <li><a class="dropdown-item" href="emp_030.jsp?lista=0" name="lista" value="0">Lista de vagas encerradas</a></li>
-                                            <li><a class="dropdown-item" href="emp_030.jsp" name="lista" value="">Lista geral de vagas</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-
-                    </section>
-
-                    <div class="espaco">
-                    </div>
+<!-- ---------------------------------------------------------------------------------------------------       -->
+<!--		NAVBAR-->
+<!-- ---------------------------------------------------------------------------------------------------       -->
+<a href="./index.jsp"> Home </a>
+<a href="./emp_010.jsp"> Criar cadastro</a>
+<a href="./emp_020.jsp"> Alteração e exclusão</a>
 
 
-                    <body>
-                        <!-- ---------------------------------------------------------------------------------------------------       -->
-                        <!-- -- FORMULARIO --      -->
-                        <!-- ---------------------------------------------------------------------------------------------------       -->
-                        <div align=center>
-                            <h1>Sistema de Controle de Vagas de Emprego</h1>
-                        </div>
-                        <div align=center>
-                            <h3>Alteração</h3>
-                        </div>
+<a href="./emp_030.jsp?lista=0"> Listar Fechadas</a>
+<a href="./emp_030.jsp?lista=1"> Listar Abertas</a>
+<a href="./emp_030.jsp"> Listar Todas</a>
 
-                        <table align="center">
-                            <tr>
-                                <td>Id vaga</td>
-                                <td style="color:blue">
-                                    <%=id%>
-                                </td>
-                            </tr>
 
-                            <tr>
-                                <td>Descrição</td>
-                                <td style="color:blue">
-                                    <%=descricao%>
-                                </td>
-                            </tr>
+<!-- ---------------------------------------------------------------------------------------------------       -->
+<!--		FORMULÁRIO-->
+<!-- ---------------------------------------------------------------------------------------------------       -->
+<div align=center><h1>Sistema de Controle de Vagas de Emprego</h1></div>
+<div align=center><h3>Alteração</h3></div>
 
-                            <tr>
-                                <td>Requisitos Obrigatórios</td>
-                                <td style="color:blue">
-                                    <%=req_obrigatorios%>
-                                </td>
-                            </tr>
+<form action="index.jsp" method="get">
+	<div class=" "><span disabled name="id" > </span></div>
+	<div class=" "><span name="descricao"  > <%=descricao_html%> </span></div>
+	<div class=" "><span name="req_obrigatorios"  > <%=req_obrigatorios_html%> </span></div>
+	<div class=" "><span name="req_desejaveis" > <%=req_desejaveis_html%> </span></div>
+	<div class=" "><span name="remuneracao"  class="mask-real" size=8 style="text-align: right"> <%=remuneracao_html%> </span></div>
+	<div class=" "><span name="beneficios"  > <%=beneficios_html%> </span></div>
+	<div class=" "><span name="local_trabalho" > <%=local_trabalho_html%> </span></div>
+	<div class=" "><span name="aberta" id="radio-choice-1a" value="1"  /> <%=aberta_html%> </span></div>
+	
+	<div class=" "><input type="submit" value="Voltar" class=" "></div>
+</form>
+	
 
-                            <tr>
-                                <td>Requisitos Desejáveis</td>
-                                <td style="color:blue">
-                                    <%=req_desejaveis%>
-                                </td>
-                            </tr>
 
-                            <tr>
-                                <td>Remuneração</td>
-                                <td style="color:blue">
-                                    <%=remuneracao%>
-                                </td>
-                            </tr>
+    
+    <!--Construçãoo de máscaras pelo JQUERY-->
+	<script type="text/javascript"> 
+ 		$(function() {
+ 		$('.mask-real').maskMoney({showSymbol:true,symbol:'R$ ', 
+ 		decimal:',', thousands:'.', allowZero:true}); // valor monet�rio
+ 		});
+	</script>
+	<!-- JQUERY + BOOTSTRAP -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquerymaskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
 
-                            <tr>
-                                <td>Benefício</td>
-                                <td style="color:blue">
-                                    <%=beneficios%>
-                                </td>
-                            </tr>
 
-                            <tr>
-                                <td>Local de Trabalho</td>
-                                <td style="color:blue">
-                                    <%=local_trabalho%>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Status vaga</td>
-                                <td style="color:blue">
-                                    <%=aberta%>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th colspan=2 style="color:green">Vaga alterada com sucesso.</th>
-                            </tr>
-                        </table>
-                        </div><br>
-
-                        <div>
-                            <form action="index.jsp" method="get">
-                                <input type="submit" value="Voltar">
-
-                            </form>
-
-                        </div>
-                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-                    </body>
-
-                    </html>
+</html>

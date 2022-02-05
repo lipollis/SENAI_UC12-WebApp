@@ -6,16 +6,16 @@ import java.util.Optional;
 import entities.Vagas;
 
 public interface IDao<T> {
-    // REFER�NCIA 'T' PARA QUE A MESMA INTERFACE SE COMUNIQUE DE FORMA GEN�RICA
+    // REFERENCIA 'T' PARA QUE A MESMA INTERFACE SE COMUNIQUE DE FORMA GENERICA
     // PASSA 't' E RETORNA 'T'
-    public T Incluir(T t);
+    public T Create(T t);
+    
+    public String Read(int aberta_java);
 
-    public T Alterar(T t);
+    public void Update(T t);
 
-    public void Excluir(Integer id_line);
+    public void Delete(int id_java);
 
-    public String Listar(int aberta);
-
-    public T Buscar(Integer id_line); // BUSCAR O END DO PACIENTE
+    public T Search(int id_java); 
 
 }
