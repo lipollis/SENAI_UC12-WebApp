@@ -26,7 +26,8 @@
 <!-- ---------------------------------------------------------------------------------------------------       -->
 <%
 DecimalFormat df = new DecimalFormat("#,##0.00");
-Integer id = Integer.parseInt(request.getParameter("id"));
+
+Integer id_html = Integer.parseInt(request.getParameter("id"));
 String descricao_html = request.getParameter("descricao");
 String req_obrigatorios_html = request.getParameter("req_obrigatorios");
 String req_desejaveis_html = request.getParameter("req_desejaveis");
@@ -39,8 +40,10 @@ float remuneracao_html_conv = Float.parseFloat(vx);
 String beneficios_html = request.getParameter("beneficios");
 String local_trabalho_html = request.getParameter("local_trabalho");
 int aberta_html = Integer.parseInt(request.getParameter("aberta"));
-/*
+
+
 VagasDaoImpl vdi = new VagasDaoImpl();
+
 Vagas v = null;
 int id = 0;
 try{
@@ -52,9 +55,10 @@ try{
 	
 try{
 	String gravar=request.getParameter("descricao");	
-	if(gravar!=null || gravar.equals("")==false)
-	{*/
-		Vagas v = new Vagas();
+	if(gravar!=null || gravar.equals("")==false){
+
+		v = new Vagas();
+		v.setId_java(id_html);
 		v.setDescricao_java(descricao_html);
 		v.setReq_obrigatorios_java(req_obrigatorios_html);
 		v.setReq_desejaveis_java(req_desejaveis_html);
@@ -62,13 +66,12 @@ try{
 		v.setBeneficios_java(beneficios_html);
 		v.setLocal_trabalho_java(local_trabalho_html);
 		v.setAberta_java(aberta_html);
-		v.setId_java(id);
- /*
+
 		vdi.Update(v);
 		//response.sendRedirect("./emp_020.jsp");
 		}
 	} catch(Exception e){ out.println("Erro em atualizar JSP"); }
-	finally{ }*/
+	finally{ }
 %>
 
 
@@ -95,19 +98,18 @@ try{
 <div align=center><h3>Alteração</h3></div>
 
 <form action="emp_021-1.jsp" method="post">
-	<div class=" "><input type="number" disabled name="id" ></div>
-	<div class=" "><input type="text" maxlength=45 required name="descricao"  ></div>
-	<div class=" "><input type="text" maxlength=45 required name="req_obrigatorios"  ></div>
-	<div class=" "><input type="text" maxlength=45 name="req_desejaveis" > </div>
-	<div class=" "><input type="text" maxlength=45 required name="remuneracao"  class="mask-real" size=8 style="text-align: right"> </div>
-	<div class=" "><input type="text" maxlength=45 required name="beneficios"  > </div>
-	<div class=" "><input type="text" maxlength=45 required name="local_trabalho" > </div>
-	<div class=" "><input type="radio"name="aberta" id="radio-choice-1a" value="1"  /> </div>
-	<div class=" "><input type="radio"name="aberta" id="radio-choice-1a" value="0"  /> </div>
+	<div class=" "><input type="number" readonly="readonly" name="id" id="id" value="<%=id_html%>"></div>
+	<div class=" "><input type="text" maxlength=45 required name="descricao" value="<%=descricao_html%>" ></div>
+	<div class=" "><input type="text" maxlength=45 required name="req_obrigatorios" value="<%=req_obrigatorios_html%>" ></div>
+	<div class=" "><input type="text" maxlength=45 name="req_desejaveis" value="<%=req_desejaveis_html%>"> </div>
+	<div class=" "><input type="text" maxlength=45 required name="remuneracao"  value="<%=remuneracao_html_conv%>" class="mask-real" size=8 style="text-align: right"> </div>
+	<div class=" "><input type="text" maxlength=45 required name="beneficios" value="<%=beneficios_html%>" > </div>
+	<div class=" "><input type="text" maxlength=45 required name="local_trabalho" value="<%=local_trabalho_html%>"> </div>
+	<div class=" "><input type="radio"name="aberta" id="radio-choice-1a" value="1" value="<%=aberta_html%>" /> Vaga aberta</div>
+	<div class=" "><input type="radio"name="aberta" id="radio-choice-1a" value="0" value="<%=aberta_html%>" /> Vaga encerrada</div>
 	<div class=" "><input type="submit" value="Enviar" class=" "></div>
 </form>
 	
-
 
     
     <!--Construçãoo de máscaras pelo JQUERY-->

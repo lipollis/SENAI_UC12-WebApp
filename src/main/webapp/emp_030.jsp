@@ -73,7 +73,7 @@ try {
 <div align=center><h3></h3></div>
 
 <div class=" ">
-	<caption class="e02"> <%=titulo%> </caption>
+	<div align=center><caption class="e02"><h3><%=titulo%></h3></caption></div>
 	<table class=" ">
 		<tr>
 			<th>Id vaga</th>
@@ -85,42 +85,45 @@ try {
 			<th>Local de Trabalho</th>
 			<th>Aberta</th>
 		</tr>
-	
 	</table>	
 <%
 int alt = 0;
 while(rs.next()) {
 	if(alt == 0) {%>
-	
-<tr bgcolor=snow class="e01">
+
 
 		<%alt = 1;
 		}  else{%>
 		
-<tr bgcolor=ivory class="e01">
-			<%alt = 0;}%>
-	<td><%=rs.getInt("id")%></td>
-	<td><%=rs.getString("descricao")%></td>
-	<td><%=rs.getString("req_obrigatorios")%></td>
-	<td><%=rs.getString("req_desejaveis")%></td>
-	<td style="text-align: right;"><%=df.format(rs.getFloat("remuneracao"))%></td>
-	<td><%=rs.getString("beneficios")%></td>
-	<td><%=rs.getString("local_trabalho")%></td>
-	<td><%=rs.getInt("aberta")%></td>
-</tr>
-<%
-	} // fecha while
-	ps.execute();
-	ps.close();
-	conn.close();
-	}catch(Exception e) {
-		out.println("Ocorreu uma exceção - " + e.getMessage());
-	}
-%>
 
-<tr><th colspan=10>
-<form action="index.jsp" method="get">
-<input type="submit" value="Voltar">
+			<%alt = 0;}%>
+	<form action="index.jsp" method="get">
+		<td><input type="hidden" name="id" value="<%=rs.getInt("id")%>"><%=rs.getInt("id") %></td>
+		<td><input type="hidden" name="descricao" value="<%=rs.getString("descricao")%>"><%=rs.getString("descricao")%></td>
+		<td><input type="hidden" name="req_obrigatorios" value="<%=rs.getString("req_obrigatorios")%>"><%=rs.getString("req_obrigatorios")%></td>
+		<td><input type="hidden" name="req_desejaveis" value="<%=rs.getString("req_desejaveis")%>"><%=rs.getString("req_desejaveis")%></td>
+		<td style="text-align: right;"><input type="hidden" name="remuneracao" value="<%=df.format(rs.getFloat("remuneracao"))%>"><%=df.format(rs.getFloat("remuneracao"))%></td>
+		<td><input type="hidden" name="beneficios" value="<%=rs.getString("beneficios")%>"><%=rs.getString("beneficios")%></td>
+		<td><input type="hidden" name="local_trabalho" value="<%=rs.getString("local_trabalho")%>"><%=rs.getString("local_trabalho")%></td>
+		<td><input type="hidden" name="aberta" value="<%=rs.getInt("aberta")%>"><%=rs.getInt("aberta")%></td>
+	</form>
+	
+
+	<%
+		} // fecha while
+		ps.execute();
+		ps.close();
+		conn.close();
+		}catch(Exception e) {
+			out.println("Ocorreu uma exceção - " + e.getMessage());
+		}
+	%>
+	
+	<form action="index.jsp" method="get">
+	<input type="submit" value="Voltar"></form>
+</div>
+
+
 
     
     <!--Construçãoo de máscaras pelo JQUERY-->

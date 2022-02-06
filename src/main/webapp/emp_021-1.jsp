@@ -26,7 +26,7 @@
 <!-- ---------------------------------------------------------------------------------------------------       -->
 <%
 DecimalFormat df = new DecimalFormat("#,##0.00");
-Integer id = Integer.parseInt(request.getParameter("id"));
+Integer id_html = Integer.parseInt(request.getParameter("id"));
 String descricao_html = request.getParameter("descricao");
 String req_obrigatorios_html = request.getParameter("req_obrigatorios");
 String req_desejaveis_html = request.getParameter("req_desejaveis");
@@ -42,11 +42,11 @@ int aberta_html = Integer.parseInt(request.getParameter("aberta"));
 
 VagasDaoImpl vdi = new VagasDaoImpl();
 Vagas v = null;
-id = 0;
+id_html = 0;
 
 try{
-	id = Integer.parseInt(request.getParameter("id"));
-	v = vdi.Search(id);
+	id_html = Integer.parseInt(request.getParameter("id"));
+	v = vdi.Search(id_html);
 	if(v.getId_java()<0 || v==null){
 		response.sendRedirect("./emp_020.jsp");
 	}} catch(Exception e){}
@@ -63,7 +63,7 @@ try{
 		v.setBeneficios_java(beneficios_html);
 		v.setLocal_trabalho_java(local_trabalho_html);
 		v.setAberta_java(aberta_html);
-		v.setId_java(id);
+		v.setId_java(id_html);
  
 		vdi.Update(v);
 		//response.sendRedirect("./emp_020.jsp");
@@ -96,7 +96,7 @@ try{
 <div align=center><h3>Alteração</h3></div>
 
 <form action="index.jsp" method="get">
-	<div class=" "><span disabled name="id" > </span></div>
+	<div class=" "><span disabled name="id" > <%=id_html%> </span></div>
 	<div class=" "><span name="descricao"  > <%=descricao_html%> </span></div>
 	<div class=" "><span name="req_obrigatorios"  > <%=req_obrigatorios_html%> </span></div>
 	<div class=" "><span name="req_desejaveis" > <%=req_desejaveis_html%> </span></div>

@@ -26,11 +26,11 @@
 <!-- ---------------------------------------------------------------------------------------------------       -->
 <%
 DecimalFormat df = new DecimalFormat("#,##0.00");
-int id =0;
+int id_html =0;
 try{
-	id = Integer.parseInt(request.getParameter("id"));
+	id_html = Integer.parseInt(request.getParameter("id"));
 	VagasDaoImpl vdi = new VagasDaoImpl();
-	vdi.Delete(id);
+	vdi.Delete(id_html);
 } catch(Exception e){}
 //response.sendRedirect("./emp_020.jsp");
 %>
@@ -62,7 +62,7 @@ try{
 
 	<table align="center">
 		<tr>
-			<th colspan=2 style="color:green">Vaga <%=id%> excluída com sucesso.</th>
+			<th colspan=2 style="color:green">Vaga <%=id_html%> excluída com sucesso.</th>
 		</tr>
 	</table>
 	

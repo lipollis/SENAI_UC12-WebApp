@@ -79,26 +79,23 @@ int alt = 0;
 while(rs.next()) {
 	if(alt == 0) {%>
 	
-<tr bgcolor=snow class="e01">
-
 		<%alt = 1;
 		}  else{%>
 		
-<tr bgcolor=ivory class="e01">
+
 			<%alt = 0;}%>
-	<td><%int id_teste=rs.getInt("id");%></td>
-	<td><%=rs.getString("descricao")%></td>
-	<td><%=rs.getString("req_obrigatorios")%></td>
-	<td><%=rs.getString("req_desejaveis")%></td>
-	<td style="text-align: right;"><%=df.format(rs.getFloat("remuneracao"))%></td>
-	<td><%=rs.getString("beneficios")%></td>
-	<td><%=rs.getString("local_trabalho")%></td>
-	<td><%=rs.getInt("aberta")%></td>
-	<td><a href='./emp_021.jsp?id=+"id"'>Alterar</a></td>
-	<td><a href='./emp_022.jsp?id=+"id"'>Excluir</a></td>
-	
-	<td><a href="emp_021.jsp?id="+"<%=id_teste%>">Alterar</a></td>
-</tr>
+<form method="post" id="formulario" action="">
+	<td><input type="hidden" name="id" value="<%=rs.getInt("id")%>"><%=rs.getInt("id") %></td>
+	<td><input type="hidden" name="descricao" value="<%=rs.getString("descricao")%>"><%=rs.getString("descricao")%></td>
+	<td><input type="hidden" name="req_obrigatorios" value="<%=rs.getString("req_obrigatorios")%>"><%=rs.getString("req_obrigatorios")%></td>
+	<td><input type="hidden" name="req_desejaveis" value="<%=rs.getString("req_desejaveis")%>"><%=rs.getString("req_desejaveis")%></td>
+	<td style="text-align: right;"><input type="hidden" name="remuneracao" value="<%=df.format(rs.getFloat("remuneracao"))%>"><%=df.format(rs.getFloat("remuneracao"))%></td>
+	<td><input type="hidden" name="beneficios" value="<%=rs.getString("beneficios")%>"><%=rs.getString("beneficios")%></td>
+	<td><input type="hidden" name="local_trabalho" value="<%=rs.getString("local_trabalho")%>"><%=rs.getString("local_trabalho")%></td>
+	<td><input type="hidden" name="aberta" value="<%=rs.getInt("aberta")%>"><%=rs.getInt("aberta")%></td>
+	<td><input type="submit" class="" value="Alterar" formaction="emp_021.jsp" onsubmit="emp_021.jsp"><a href="emp_021.jsp">Alterar</a></td>
+	<td><input type="submit" class="" value="Excluir" formaction="emp_022.jsp" onsubmit="emp_022.jsp"><a href="emp_022.jsp">Excluir</a></td>
+</form>
 <%} // fecha while
 	ps.execute();
 	ps.close();
@@ -108,10 +105,14 @@ while(rs.next()) {
 	}
 %>
 
-<tr><th colspan=10>
-<form action="index.jsp" method="get">
-<input type="submit" value="Voltar">
 
+
+<form action="index.jsp" method="get">
+<input type="submit" value="Voltar"></form>
+</div>
+
+	                  
+	                  
     
     <!--Construçãoo de máscaras pelo JQUERY-->
 	<script type="text/javascript"> 

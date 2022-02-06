@@ -26,7 +26,7 @@
 <!-- ---------------------------------------------------------------------------------------------------       -->
 <%
 DecimalFormat df = new DecimalFormat("#,##0.00");
-//int id = Integer.parseInt(request.getParameter("id"));
+int id_html = Integer.parseInt(request.getParameter("id"));
 String descricao_html = request.getParameter("descricao");
 String req_obrigatorios_html = request.getParameter("req_obrigatorios");
 String req_desejaveis_html = request.getParameter("req_desejaveis");
@@ -83,7 +83,7 @@ try{
 <div align=center><h3>Inclusão</h3></div>
 
 <form action="index.jsp" method="get">
-	<div class=" "><span disabled name="id" > </span></div>
+	<div class=" "><span disabled name="id" > <%=id_html%> </span></div>
 	<div class=" "><span name="descricao"  > <%=descricao_html%> </span></div>
 	<div class=" "><span name="req_obrigatorios"  > <%=req_obrigatorios_html%> </span></div>
 	<div class=" "><span name="req_desejaveis" > <%=req_desejaveis_html%> </span></div>

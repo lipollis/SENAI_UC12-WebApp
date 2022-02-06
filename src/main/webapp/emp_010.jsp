@@ -43,7 +43,7 @@
 <div align=center><h3>Inclusão</h3></div>
 
 <form action="emp_011.jsp" method="post">
-	<div class=" "><input type="number" disabled name="id" ></div>
+	<div class=" "><input type="number" value="" disabled name="id" ></div>
 	<div class=" "><input type="text" maxlength=45 required name="descricao"  ></div>
 	<div class=" "><input type="text" maxlength=45 required name="req_obrigatorios"  ></div>
 	<div class=" "><input type="text" maxlength=45 name="req_desejaveis" > </div>
