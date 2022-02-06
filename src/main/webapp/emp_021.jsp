@@ -27,7 +27,11 @@
 <%
 DecimalFormat df = new DecimalFormat("#,##0.00");
 
-Integer id_html = Integer.parseInt(request.getParameter("id"));
+VagasDaoImpl vdi = new VagasDaoImpl();
+Vagas v = null;
+int id_html =0;
+
+id_html = Integer.parseInt(request.getParameter("id"));
 String descricao_html = request.getParameter("descricao");
 String req_obrigatorios_html = request.getParameter("req_obrigatorios");
 String req_desejaveis_html = request.getParameter("req_desejaveis");
@@ -41,14 +45,9 @@ String beneficios_html = request.getParameter("beneficios");
 String local_trabalho_html = request.getParameter("local_trabalho");
 int aberta_html = Integer.parseInt(request.getParameter("aberta"));
 
-
-VagasDaoImpl vdi = new VagasDaoImpl();
-
-Vagas v = null;
-int id = 0;
 try{
-	id = Integer.parseInt(request.getParameter("id"));
-	v = vdi.Search(id);
+	id_html = Integer.parseInt(request.getParameter("id"));
+	v = vdi.Search(id_html);
 	if(v.getId_java()<0 || v==null){
 		response.sendRedirect("./emp_020.jsp");
 	}} catch(Exception e){}

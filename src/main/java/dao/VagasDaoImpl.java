@@ -135,8 +135,8 @@ public class VagasDaoImpl implements IDao<Vagas> {
 					+ "remuneracao = ?,"
 					+ "beneficios = ?,"
 					+ "local_trabalho = ?, "
-					+ "aberta = ?,"
-					+ " WHERE id = ?";
+					+ "aberta = ?"
+					+ " WHERE id = ?;";
 			
 			PreparedStatement ps = (PreparedStatement)conn.prepareStatement(sql);
 			ps.setString(1, v.getDescricao_java());
