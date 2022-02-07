@@ -126,20 +126,69 @@ try{
 <!-- ---------------------------------------------------------------------------------------------------       -->
 <!--		FORMULÁRIO-->
 <!-- ---------------------------------------------------------------------------------------------------       -->
-<div align=center><h1>Sistema de Controle de Vagas de Emprego</h1></div>
-<div align=center><h3>Alteração</h3></div>
+<div class="titulo">
+	<div align=center><h1>Sistema de Controle de Vagas de Emprego</h1></div>
+	<div align=center><h3>Alteração</h3></div></div>
 
-<form action="emp_021-1.jsp" method="post">
-	<div class=" "><input type="number" readonly="readonly" name="id" id="id" value="<%=id_html%>"></div>
-	<div class=" "><input type="text" maxlength=45 required name="descricao" value="<%=descricao_html%>" ></div>
-	<div class=" "><input type="text" maxlength=45 required name="req_obrigatorios" value="<%=req_obrigatorios_html%>" ></div>
-	<div class=" "><input type="text" maxlength=45 name="req_desejaveis" value="<%=req_desejaveis_html%>"> </div>
-	<div class=" "><input type="text" maxlength=45 required name="remuneracao"  value="<%=remuneracao_html_conv%>" class="mask-real" size=8 style="text-align: right"> </div>
-	<div class=" "><input type="text" maxlength=45 required name="beneficios" value="<%=beneficios_html%>" > </div>
-	<div class=" "><input type="text" maxlength=45 required name="local_trabalho" value="<%=local_trabalho_html%>"> </div>
-	<div class=" "><input type="radio"name="aberta" id="radio-choice-1a" value="1" value="<%=aberta_html%>" /> Vaga aberta</div>
-	<div class=" "><input type="radio"name="aberta" id="radio-choice-1a" value="0" value="<%=aberta_html%>" /> Vaga encerrada</div>
-	<div class=" "><input type="submit" value="Enviar" class=" "></div>
+<form class="form-floating" action="emp_021-1.jsp" method="post">
+
+	<div class="form-container ">
+		<div class="form-floating mb-3 ">
+			<input class="form-control" maxlength=45 type="number" id="id"  name="id" readonly="readonly" value="<%=id_html%>" >
+			<label for="id" class="col-sm-5 col-form-label">ID Vaga</label>
+	</div></div>
+	
+	<div class="form-container ">
+		<div class="form-floating mb-3 ">
+			<input class="form-control" maxlength=45 type="text" required id="descricao"  name="descricao" value="<%=descricao_html%>" >
+			<label for="descricao" class="col-sm-5 col-form-label">Descrição</label>
+	</div></div>
+	
+	<div class="form-container ">
+		<div class="form-floating mb-3 ">
+			<input class="form-control" maxlength=45 type="text" required id="req_obrigatorios"  name="req_obrigatorios" value="<%=req_obrigatorios_html%>" >
+			<label for="req_obrigatorios" class="col-sm-5 col-form-label">Requisitos Obrigatórios</label>
+	</div></div>
+	
+	<div class="form-container ">
+		<div class="form-floating mb-3 ">
+			<input class="form-control" maxlength=45 type="text" required id="req_desejaveis"  name="req_desejaveis" value="<%=req_desejaveis_html%>" >
+			<label for="req_desejaveis" class="col-sm-5 col-form-label">Requisitos Desejáveis</label>
+	</div></div>
+
+	<div class="form-container ">
+		<div class="form-floating mb-3 ">
+			<input class="form-control mask-real" maxlength=45 type="text" required id="remuneracao"  name="remuneracao" value="<%=remuneracao_html_conv%>" size=8 style="text-align: right">
+			<label for="remuneracao" class="col-sm-5 col-form-label">Remuneração</label>
+	</div></div>
+
+	<div class="form-container ">
+		<div class="form-floating mb-3 ">
+			<input class="form-control" maxlength=45 type="text" required id="beneficios"  name="beneficios" value="<%=beneficios_html%>" >
+			<label for="beneficios" class="col-sm-5 col-form-label">Beneficios</label>
+	</div></div>
+
+	<div class="form-container ">
+		<div class="form-floating mb-3 ">
+			<input class="form-control" maxlength=45 type="text" required id="local_trabalho"  name="local_trabalho" value="<%=local_trabalho_html%>" >
+			<label for="local_trabalho" class="col-sm-5 col-form-label">Local de Trabalho</label>
+	</div></div>
+	
+	<div class="form-container ">
+		<div class="wrap-radio">
+			<div class="form-check ">
+				<label class="form-check-label container-radio" for="radio-choice-1a">Vaga aberta
+				<input class="form-check-input"  type="radio"name="aberta" id="radio-choice-1a" value="1" value="<%=aberta_html%>"/>
+				<span class="checkmark"></span></label></div>
+			<div class="form-check ">
+				<label class="form-check-label container-radio" for="radio-choice-2a">Vaga encerrada
+				<input class="form-check-input" type="radio"name="aberta" id="radio-choice-2a" value="0" value="<%=aberta_html%>"/>
+				<span class="checkmark"></span></label></div>
+	</div></div>
+
+	<div class="form-container "><div class="button-container"><input type="submit" value="Enviar" class="btn btn-success "></div></div>
+	
+
 </form>
 	
 

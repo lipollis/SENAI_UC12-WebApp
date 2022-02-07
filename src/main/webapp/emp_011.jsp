@@ -28,24 +28,30 @@
 <!-- ---------------------------------------------------------------------------------------------------       -->
 <%
 DecimalFormat df = new DecimalFormat("#,##0.00");
-int id_html = Integer.parseInt(request.getParameter("id"));
+
+//int id_html = Integer.parseInt(request.getParameter("id"));
 String descricao_html = request.getParameter("descricao");
 String req_obrigatorios_html = request.getParameter("req_obrigatorios");
 String req_desejaveis_html = request.getParameter("req_desejaveis");
+
 // CONVERSÃO DE STRING PARA FLOAT
 String remuneracao_html = request.getParameter("remuneracao");
 String vx = remuneracao_html;
 vx = vx.replace(".","");
 vx = vx.replace(",",".");
 float remuneracao_html_conv = Float.parseFloat(vx);
+
 String beneficios_html = request.getParameter("beneficios");
 String local_trabalho_html = request.getParameter("local_trabalho");
 int aberta_html = Integer.parseInt(request.getParameter("aberta"));
 
+VagasDaoImpl vdi = new VagasDaoImpl();
+Vagas v = new Vagas();
+
 try{
-	String gravar = request.getParameter("descricao");
-	if(gravar!=null || gravar.equals("")==false){
-		Vagas v = new Vagas();
+	String gravar=request.getParameter("descricao");	
+	if(gravar!=null || gravar.equals("")==false)
+	{
 		v.setDescricao_java(descricao_html);
 		v.setReq_obrigatorios_java(req_obrigatorios_html);
 		v.setReq_desejaveis_java(req_desejaveis_html);
@@ -53,7 +59,8 @@ try{
 		v.setBeneficios_java(beneficios_html);
 		v.setLocal_trabalho_java(local_trabalho_html);
 		v.setAberta_java(aberta_html);
-		VagasDaoImpl vdi = new VagasDaoImpl();
+		//v.setId_java(id_html);
+		
 		vdi.Create(v);
 		//response.sendRedirect("./emp_020.jsp");
 		}
@@ -114,18 +121,64 @@ try{
 <div class="titulo">
 	<div align=center><h1>Sistema de Controle de Vagas de Emprego</h1></div>
 	<div align=center><h3>Inclusão</h3></div></div>
-
-<form action="index.jsp" method="get">
-	<div class=" "><span disabled id="id" >  </span></div>
-	<div class=" "><span id="descricao"  > <%=descricao_html%> </span></div>
-	<div class=" "><span id="req_obrigatorios"  > <%=req_obrigatorios_html%> </span></div>
-	<div class=" "><span id="req_desejaveis" > <%=req_desejaveis_html%> </span></div>
-	<div class=" "><span id="remuneracao"  class="mask-real" size=8 style="text-align: right"> <%=remuneracao_html%> </span></div>
-	<div class=" "><span id="beneficios"  > <%=beneficios_html%> </span></div>
-	<div class=" "><span id="local_trabalho" > <%=local_trabalho_html%> </span></div>
-	<div class=" "><span id="aberta"> <%=aberta_html%> </span></div>
 	
-	<div class=" "><input type="submit" value="Voltar" class=" "></div>
+<div class="alert alert-success" role="alert">
+  Vaga cadastrada!
+</div>
+
+<form class="form-floating" action="index.jsp" method="get">
+
+	<div class="form-container ">
+		<div class="form-floating mb-3 ">
+			<span class="form-control" maxlength=45 type="number" id="id"  name="id" value=" " disabled >
+			<label for="id" class="col-sm-5 col-form-label">ID Vaga</label>
+	</div></div>
+	
+	<div class="form-container ">
+		<div class="form-floating mb-3 ">
+			<span class="form-control" maxlength=45 type="text" id="descricao"  name="descricao" value=" " ><%=descricao_html%></span>
+			<label for="descricao" class="col-sm-5 col-form-label">Descrição</label>
+	</div></div>
+	
+	<div class="form-container ">
+		<div class="form-floating mb-3 ">
+			<span class="form-control" maxlength=45 type="text" id="req_obrigatorios"  name="req_obrigatorios" value=" " ><%=req_obrigatorios_html%> </span>
+			<label for="req_obrigatorios" class="col-sm-5 col-form-label">Requisitos Obrigatórios</label>
+	</div></div>
+	
+	<div class="form-container ">
+		<div class="form-floating mb-3 ">
+			<span class="form-control" maxlength=45 type="text" id="req_desejaveis"  name="req_desejaveis" value=" " ><%=req_desejaveis_html%> </span>
+			<label for="req_desejaveis" class="col-sm-5 col-form-label">Requisitos Desejáveis</label>
+	</div></div>
+	
+	<div class="form-container ">
+		<div class="form-floating mb-3 ">
+			<span class="form-control mask-real" maxlength=45 type="text" id="remuneracao"  name="remuneracao" value=" " class="mask-real" size=8 style="text-align: right"><%=remuneracao_html%> </span>
+			<label for="remuneracao" class="col-sm-5 col-form-label">Remuneração</label>
+	</div></div>
+
+	<div class="form-container ">
+		<div class="form-floating mb-3 ">
+			<span class="form-control" maxlength=45 type="text" id="beneficios"  name="beneficios" value=" " ><%=beneficios_html%></span>
+			<label for="beneficios" class="col-sm-5 col-form-label">Beneficios</label>
+	</div></div>
+
+	<div class="form-container ">
+		<div class="form-floating mb-3 ">
+			<span class="form-control" maxlength=45 type="text" id="local_trabalho"  name="local_trabalho" value=" " ><%=local_trabalho_html%></span>
+			<label for="local_trabalho" class="col-sm-5 col-form-label">Local de Trabalho</label>
+	</div></div>
+	
+	<div class="form-container ">
+		<div class="form-floating mb-3 ">
+			<span class="form-control" maxlength=45 type="text" id="aberta"  name="aberta" value=" " ><%=aberta_html%></span>
+			<label for="aberta" class="col-sm-5 col-form-label">Status da vaga</label>
+	</div></div>
+	
+	<div class="form-container "><div class="button-container"><input type="submit" value="Voltar" class="btn btn-warning "></div></div>
+	
+
 </form>
 	
 

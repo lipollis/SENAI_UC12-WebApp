@@ -94,13 +94,13 @@ try{
 
 <form action="index.jsp" method="get">
 
-	<table align="center">
-		<tr>
-			<th colspan=2 style="color:green">Vaga <%=id_html%> excluída com sucesso.</th>
-		</tr>
-	</table>
-	
-	<div class=" "><input type="submit" value="Voltar" class=" "></div>
+<div class="alert alert-success" role="alert">
+  Vaga <%=id_html%> excluída com sucesso.
+</div>
+
+
+	<div class="form-container "><div class="button-container">
+		<input type="submit" value="Voltar" class="btn btn-warning "></div></div>
 </form>
 	
 

@@ -131,14 +131,14 @@ while(rs.next()) {
 		
 			<%alt = 0;}%>
 	<form class="form-floating" action="index.jsp" method="get" id="formulario">
-		<th scope="row" class="align-bottom"><input class="form-control" type="hidden" name="id" id="id" value="<%=rs.getInt("id")%>"><%=rs.getInt("id") %></th>
-		<td class="align-bottom"><input class="form-control" type="hidden" name="descricao" value="<%=rs.getString("descricao")%>"><%=rs.getString("descricao")%></td>
-		<td class="align-bottom"><input class="form-control" type="hidden" name="req_obrigatorios" value="<%=rs.getString("req_obrigatorios")%>"><%=rs.getString("req_obrigatorios")%></td>
-		<td class="align-bottom"><input class="form-control" type="hidden" name="req_desejaveis" value="<%=rs.getString("req_desejaveis")%>"><%=rs.getString("req_desejaveis")%></td>
-		<td class="align-bottom"><input class="form-control" type="hidden" name="remuneracao" value="<%=df.format(rs.getFloat("remuneracao"))%>"><%=df.format(rs.getFloat("remuneracao"))%></td>
-		<td class="align-bottom"><input class="form-control" type="hidden" name="beneficios" value="<%=rs.getString("beneficios")%>"><%=rs.getString("beneficios")%></td>
-		<td class="align-bottom"><input class="form-control" type="hidden" name="local_trabalho" value="<%=rs.getString("local_trabalho")%>"><%=rs.getString("local_trabalho")%></td>
-		<td class="align-bottom"><input class="form-control" type="hidden" name="aberta" value="<%=rs.getInt("aberta")%>"><%=rs.getInt("aberta")%></td>
+		<th scope="row" ><input class="form-control" type="hidden" name="id" id="id" value="<%=rs.getInt("id")%>"><%=rs.getInt("id") %></th>
+		<td ><input class="form-control" type="hidden" name="descricao" value="<%=rs.getString("descricao")%>"><%=rs.getString("descricao")%></td>
+		<td ><input class="form-control" type="hidden" name="req_obrigatorios" value="<%=rs.getString("req_obrigatorios")%>"><%=rs.getString("req_obrigatorios")%></td>
+		<td ><input class="form-control" type="hidden" name="req_desejaveis" value="<%=rs.getString("req_desejaveis")%>"><%=rs.getString("req_desejaveis")%></td>
+		<td ><input class="form-control" type="hidden" name="remuneracao" value="<%=df.format(rs.getFloat("remuneracao"))%>"><%=df.format(rs.getFloat("remuneracao"))%></td>
+		<td ><input class="form-control" type="hidden" name="beneficios" value="<%=rs.getString("beneficios")%>"><%=rs.getString("beneficios")%></td>
+		<td ><input class="form-control" type="hidden" name="local_trabalho" value="<%=rs.getString("local_trabalho")%>"><%=rs.getString("local_trabalho")%></td>
+		<td ><input class="form-control" type="hidden" name="aberta" value="<%=rs.getInt("aberta")%>"><%=rs.getInt("aberta")%></td>
 
 	</tr>
 
@@ -154,8 +154,9 @@ while(rs.next()) {
 </tbody>
 </table></div>	
 	
-	<form action="index.jsp" method="get">
-	<input type="submit" value="Voltar"></form>
+<form action="index.jsp" method="get">
+	<div class="form-container "><div class="button-container">
+		<input type="submit" value="Voltar" class="btn btn-warning "></div></div></form>
 </div>
 
 

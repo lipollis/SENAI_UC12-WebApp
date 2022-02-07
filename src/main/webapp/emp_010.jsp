@@ -78,57 +78,58 @@
 
 <form class="form-floating" action="emp_011.jsp" method="post">
 
+	
 	<div class="form-container ">
 		<div class="form-floating mb-3 ">
-			<input class="form-control" maxlength=45 id="id" type="number" value="" disabled name="id" >
-			<label for="id" class="col-sm-2 col-form-label">ID Vaga</label>
+			<input class="form-control" maxlength=45 type="number" id="id"  name="id" value=" " disabled >
+			<label for="id" class="col-sm-5 col-form-label">ID Vaga</label>
 	</div></div>
 	
 	<div class="form-container ">
 		<div class="form-floating mb-3 ">
-			<input class="form-control" maxlength=45 id="descricao" type="text" required name="descricao"  >
-			<label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
-	</div></div>	
+			<input class="form-control" maxlength=45 type="text" required id="descricao"  name="descricao" value=" " >
+			<label for="descricao" class="col-sm-5 col-form-label">Descrição</label>
+	</div></div>
 	
 	<div class="form-container ">
 		<div class="form-floating mb-3 ">
-			<input class="form-control" maxlength=45 id="req_obrigatorios" type="text" required name="req_obrigatorios"  >
-			<label for="req_obrigatorios" class="col-sm-2 col-form-label">Requisitos Obrigatórios</label>
+			<input class="form-control" maxlength=45 type="text" required id="req_obrigatorios"  name="req_obrigatorios" value=" " >
+			<label for="req_obrigatorios" class="col-sm-5 col-form-label">Requisitos Obrigatórios</label>
 	</div></div>
-		
+	
 	<div class="form-container ">
 		<div class="form-floating mb-3 ">
-			<input class="form-control" maxlength=45 id="req_desejaveis" type="text" name="req_desejaveis" >
-			<label for="req_desejaveis" class="col-sm-2 col-form-label">Requisitos Desejáveis</label>
+			<input class="form-control" maxlength=45 type="text" required id="req_desejaveis"  name="req_desejaveis" value=" " >
+			<label for="req_desejaveis" class="col-sm-5 col-form-label">Requisitos Desejáveis</label>
 	</div></div>
-		
+
 	<div class="form-container ">
 		<div class="form-floating mb-3 ">
-			<input class="form-control" maxlength=45 id="remuneracao" type="text" required name="remuneracao"  class="mask-real" style="text-align: right">
-			<label for="remuneracao" class="col-sm-2 col-form-label">Remuneração</label>
+			<input class="form-control mask-real" maxlength=45 type="text" required id="remuneracao"  name="remuneracao" value=" " size=8 style="text-align: right">
+			<label for="remuneracao" class="col-sm-5 col-form-label">Remuneração</label>
 	</div></div>
-		
+
 	<div class="form-container ">
 		<div class="form-floating mb-3 ">
-			<input class="form-control" maxlength=45 id="beneficios" type="text" required name="beneficios"  >
-			<label for="beneficios" class="col-sm-2 col-form-label">Benefícios</label>
+			<input class="form-control" maxlength=45 type="text" required id="beneficios"  name="beneficios" value=" " >
+			<label for="beneficios" class="col-sm-5 col-form-label">Beneficios</label>
 	</div></div>
-		
+
 	<div class="form-container ">
 		<div class="form-floating mb-3 ">
-			<input class="form-control" maxlength=45 id="local_trabalho" type="text" required name="local_trabalho" >
-			<label for="local_trabalho" class="col-sm-2 col-form-label">Local de Trabalho</label>
-	</div></div>	
+			<input class="form-control" maxlength=45 type="text" required id="local_trabalho"  name="local_trabalho" value=" " >
+			<label for="local_trabalho" class="col-sm-5 col-form-label">Local de Trabalho</label>
+	</div></div>
 	
 	<div class="form-container ">
 		<div class="wrap-radio">
 			<div class="form-check ">
 				<label class="form-check-label container-radio" for="radio-choice-1a">Vaga aberta
-				<input class="form-check-input"  type="radio"name="aberta" id="radio-choice-1a" value="1"/>
+				<input class="form-check-input"  type="radio"name="aberta" id="radio-choice-1a" value="1"  />
 				<span class="checkmark"></span></label></div>
 			<div class="form-check ">
 				<label class="form-check-label container-radio" for="radio-choice-2a">Vaga encerrada
-				<input class="form-check-input" type="radio"name="aberta" id="radio-choice-2a" value="0"/>
+				<input class="form-check-input" type="radio"name="aberta" id="radio-choice-2a" value="0"  />
 				<span class="checkmark"></span></label></div>
 	</div></div>
 
