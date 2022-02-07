@@ -35,3 +35,8 @@
         <li> Para a interface utilize as páginas jsp com elementos em HTML, iniciando com a primeira página como index.jsp . </li>
       </ul>
 </div>
+
+<br>
+<h2>:pencil2: Estrutura de navegação </h2>
+
+<img src="https://github.com/lipollis/SENAI_UC12-WebApp/blob/main/Mapa%20de%20navega%C3%A7%C3%A3o.jpg" />
