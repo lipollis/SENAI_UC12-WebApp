@@ -33,7 +33,7 @@ public class VagasDaoImpl implements IDao<Vagas> {
 			ConectaBD cbd = new ConectaBD();
 			Connection conn = cbd.Conectar();
 
-			// INCLUSÃO DO OBJETO EM PreparedStatement
+			// INCLUSï¿½O DO OBJETO EM PreparedStatement
 			String sql = "INSERT INTO vagas("
 							+ "descricao,"
 							+ "req_obrigatorios,"
@@ -73,7 +73,7 @@ public class VagasDaoImpl implements IDao<Vagas> {
 			ConectaBD cbd = new ConectaBD();
 			Connection conn = cbd.Conectar();
 			
-			// VERIFICA SE A VAGA ESTÁ COM STATUS ABERTA OU ENCERRADA
+			// VERIFICA SE A VAGA ESTï¿½ COM STATUS ABERTA OU ENCERRADA
 			String sql = "SELECT * FROM vagas";
 			if (aberta_java == 1) {
 				sql = sql + " WHERE aberta=1";
@@ -135,7 +135,7 @@ public class VagasDaoImpl implements IDao<Vagas> {
 					+ "remuneracao = ?,"
 					+ "beneficios = ?,"
 					+ "local_trabalho = ?, "
-					+ "aberta = ?"
+					+ "aberta = ?,"
 					+ " WHERE id = ?;";
 			
 			PreparedStatement ps = (PreparedStatement)conn.prepareStatement(sql);
@@ -186,12 +186,15 @@ public class VagasDaoImpl implements IDao<Vagas> {
 	@Override
 	public Vagas Search(int id) {
 		Vagas v = new Vagas();
+		String linha = "";
 		try {
 			ConectaBD cbd = new ConectaBD();
 			Connection conn = cbd.Conectar();
 
 			String sql = "SELECT * FROM vagas WHERE id=" +id;
 			PreparedStatement ps = (PreparedStatement)conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
 		}catch (Exception e) {
 			System.out.println("Erro ao buscar :" + e);
 		}
