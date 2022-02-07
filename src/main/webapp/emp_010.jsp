@@ -80,43 +80,43 @@
 
 	<div class="form-container ">
 		<div class="form-floating mb-3 ">
-			<input class="form-control" id="id" type="number" value="" disabled name="id" >
+			<input class="form-control" maxlength=45 id="id" type="number" value="" disabled name="id" >
 			<label for="id" class="col-sm-2 col-form-label">ID Vaga</label>
 	</div></div>
 	
 	<div class="form-container ">
 		<div class="form-floating mb-3 ">
-			<input class="form-control" id="descricao" type="text" required name="descricao"  >
+			<input class="form-control" maxlength=45 id="descricao" type="text" required name="descricao"  >
 			<label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
 	</div></div>	
 	
 	<div class="form-container ">
 		<div class="form-floating mb-3 ">
-			<input class="form-control" id="req_obrigatorios" type="text" required name="req_obrigatorios"  >
+			<input class="form-control" maxlength=45 id="req_obrigatorios" type="text" required name="req_obrigatorios"  >
 			<label for="req_obrigatorios" class="col-sm-2 col-form-label">Requisitos Obrigatórios</label>
 	</div></div>
 		
 	<div class="form-container ">
 		<div class="form-floating mb-3 ">
-			<input class="form-control" id="req_desejaveis" type="text" name="req_desejaveis" >
+			<input class="form-control" maxlength=45 id="req_desejaveis" type="text" name="req_desejaveis" >
 			<label for="req_desejaveis" class="col-sm-2 col-form-label">Requisitos Desejáveis</label>
 	</div></div>
 		
 	<div class="form-container ">
 		<div class="form-floating mb-3 ">
-			<input class="form-control" id="remuneracao" type="text" required name="remuneracao"  class="mask-real" style="text-align: right">
+			<input class="form-control" maxlength=45 id="remuneracao" type="text" required name="remuneracao"  class="mask-real" style="text-align: right">
 			<label for="remuneracao" class="col-sm-2 col-form-label">Remuneração</label>
 	</div></div>
 		
 	<div class="form-container ">
 		<div class="form-floating mb-3 ">
-			<input class="form-control" id="beneficios" type="text" required name="beneficios"  >
+			<input class="form-control" maxlength=45 id="beneficios" type="text" required name="beneficios"  >
 			<label for="beneficios" class="col-sm-2 col-form-label">Benefícios</label>
 	</div></div>
 		
 	<div class="form-container ">
 		<div class="form-floating mb-3 ">
-			<input class="form-control" id="local_trabalho" type="text" required name="local_trabalho" >
+			<input class="form-control" maxlength=45 id="local_trabalho" type="text" required name="local_trabalho" >
 			<label for="local_trabalho" class="col-sm-2 col-form-label">Local de Trabalho</label>
 	</div></div>	
 	

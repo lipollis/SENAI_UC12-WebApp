@@ -33,7 +33,7 @@ public class VagasDaoImpl implements IDao<Vagas> {
 			ConectaBD cbd = new ConectaBD();
 			Connection conn = cbd.Conectar();
 
-			// INCLUS�O DO OBJETO EM PreparedStatement
+			// INCLUSAO DO OBJETO EM PreparedStatement
 			String sql = "INSERT INTO vagas("
 							+ "descricao,"
 							+ "req_obrigatorios,"
@@ -73,7 +73,7 @@ public class VagasDaoImpl implements IDao<Vagas> {
 			ConectaBD cbd = new ConectaBD();
 			Connection conn = cbd.Conectar();
 			
-			// VERIFICA SE A VAGA EST� COM STATUS ABERTA OU ENCERRADA
+			// VERIFICA SE A VAGA ESTA COM STATUS ABERTA OU ENCERRADA
 			String sql = "SELECT * FROM vagas";
 			if (aberta_java == 1) {
 				sql = sql + " WHERE aberta=1";
@@ -129,14 +129,14 @@ public class VagasDaoImpl implements IDao<Vagas> {
 			Connection conn = cbd.Conectar();
 			
 			String sql = "UPDATE vagas SET "
-					+ "descricao = ?,"
-					+ "req_obrigatorios = ?,"
-					+ "req_desejaveis = ?,"
-					+ "remuneracao = ?,"
-					+ "beneficios = ?,"
+					+ "descricao = ?, "
+					+ "req_obrigatorios = ?, "
+					+ "req_desejaveis = ?, "
+					+ "remuneracao = ?, "
+					+ "beneficios = ?, "
 					+ "local_trabalho = ?, "
-					+ "aberta = ?,"
-					+ " WHERE id = ?;";
+					+ "aberta = ? "
+					+ "WHERE id = ?;";
 			
 			PreparedStatement ps = (PreparedStatement)conn.prepareStatement(sql);
 			ps.setString(1, v.getDescricao_java());

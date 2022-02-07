@@ -31,4 +31,19 @@ form{
 
 
 
-/* RADIO BUTTON */
+/* TABELA */
+table {
+  border-collapse: collapse;
+}
+table tbody tr {
+  font-family: 'Roboto Condensed', 'Helvetica', 'Arial', sans-serif;
+  text-align: left;
+}
+td, th {
+    text-align: center;
+    vertical-align: middle
+}
+
+image{
+	width: 10px;
+}

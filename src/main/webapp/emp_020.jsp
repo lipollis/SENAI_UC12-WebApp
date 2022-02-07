@@ -15,9 +15,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="estilos.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
 		crossorigin="anonymous">
+	
 	
 
 <title>Sistema de Controle de Vagas de Emprego</title>
@@ -85,49 +87,84 @@ try {
 
 
 <!-- ---------------------------------------------------------------------------------------------------       -->
-<!--		FORMULÁRIO-->
+<!--		FORMULÁRIO																						   -->
 <!-- ---------------------------------------------------------------------------------------------------       -->
-<div align=center><h1>Sistema de Controle de Vagas de Emprego</h1></div>
-<div align=center><h3></h3></div>
+<div class="titulo">
+	<div align=center><h1>Sistema de Controle de Vagas de Emprego</h1></div>
+	<div align=center><h3></h3></div></div>
 
-<div class=" ">
-	<table class=" ">
+<div class="table-responsive ">
+	<table class="table table-hover">
 	<caption class="e02"> </caption>
-		<tr>
-			<th>Id vaga</th>
-			<th>Descricao</th>
-			<th>Requisitos Obrigatorios</th>
-			<th>Requisitos Desejaveis</th>
-			<th>Remuneracao</th>
-			<th>Beneficios</th>
-			<th>Local de Trabalho</th>
-			<th>Aberta</th>
-			<th>Alterar</th>
-			<th>Excluir</th>
-		</tr>
+	<thead><tr  class="e01 table-secondary">
+			<th scope="col">Id vaga</th>
+			<th scope="col">Descricao</th>
+			<th scope="col">Requisitos Obrigatorios</th>
+			<th scope="col">Requisitos Desejaveis</th>
+			<th scope="col">Remuneracao</th>
+			<th scope="col">Beneficios</th>
+			<th scope="col">Local de Trabalho</th>
+			<th scope="col">Aberta</th>
+			<th scope="col">Alterar</th>
+			<th scope="col">Excluir</th>
+		</tr></thead>
 	
-	</table>	
 <%
 int alt = 0;
 while(rs.next()) {
 	if(alt == 0) {%>
-	
+	<tr bgcolor=snow class="e01">
 		<%alt = 1;
 		}  else{%>
+		  <tbody>
+		<tr bgcolor=ivory class="e01">
 		
-
 			<%alt = 0;}%>
-<form method="post" id="formulario" action="">
-	<td><input type="hidden" name="id" value="<%=rs.getInt("id")%>"><%=rs.getInt("id") %></td>
-	<td><input type="hidden" name="descricao" value="<%=rs.getString("descricao")%>"><%=rs.getString("descricao")%></td>
-	<td><input type="hidden" name="req_obrigatorios" value="<%=rs.getString("req_obrigatorios")%>"><%=rs.getString("req_obrigatorios")%></td>
-	<td><input type="hidden" name="req_desejaveis" value="<%=rs.getString("req_desejaveis")%>"><%=rs.getString("req_desejaveis")%></td>
-	<td style="text-align: right;"><input type="hidden" name="remuneracao" value="<%=df.format(rs.getFloat("remuneracao"))%>"><%=df.format(rs.getFloat("remuneracao"))%></td>
-	<td><input type="hidden" name="beneficios" value="<%=rs.getString("beneficios")%>"><%=rs.getString("beneficios")%></td>
-	<td><input type="hidden" name="local_trabalho" value="<%=rs.getString("local_trabalho")%>"><%=rs.getString("local_trabalho")%></td>
-	<td><input type="hidden" name="aberta" value="<%=rs.getInt("aberta")%>"><%=rs.getInt("aberta")%></td>
-	<td><input type="submit" class="" value="Alterar" formaction="emp_021.jsp" onsubmit="emp_021.jsp"></td>
-	<td><input type="submit" class="" value="Excluir" formaction="emp_022.jsp" onsubmit="emp_022.jsp"></td>
+<form class="form-floating" method="post" id="formulario" action="">
+
+
+      	<th scope="row" class="align-bottom"><input class="form-control" type="hidden" name="id" id="id" value="<%=rs.getInt("id")%>"><%=rs.getInt("id") %></th>
+		<td class="align-bottom"><input class="form-control" type="hidden" name="descricao" value="<%=rs.getString("descricao")%>"><%=rs.getString("descricao")%></td>
+		<td class="align-bottom"><input class="form-control" type="hidden" name="req_obrigatorios" value="<%=rs.getString("req_obrigatorios")%>"><%=rs.getString("req_obrigatorios")%></td>
+		<td class="align-bottom"><input class="form-control" type="hidden" name="req_desejaveis" value="<%=rs.getString("req_desejaveis")%>"><%=rs.getString("req_desejaveis")%></td>
+		<td class="align-bottom"><input class="form-control" type="hidden" name="remuneracao" value="<%=df.format(rs.getFloat("remuneracao"))%>"><%=df.format(rs.getFloat("remuneracao"))%></td>
+		<td class="align-bottom"><input class="form-control" type="hidden" name="beneficios" value="<%=rs.getString("beneficios")%>"><%=rs.getString("beneficios")%></td>
+		<td class="align-bottom"><input class="form-control" type="hidden" name="local_trabalho" value="<%=rs.getString("local_trabalho")%>"><%=rs.getString("local_trabalho")%></td>
+		<td class="align-bottom"><input class="form-control" type="hidden" name="aberta" value="<%=rs.getInt("aberta")%>"><%=rs.getInt("aberta")%></td>
+    	<td class="align-bottom"><input class="form-control" type="image" src="./edit.png" 
+    		value="Alterar"  formaction="emp_021.jsp" onclick="Editar()"></td>
+		<td class="align-bottom"><input class="form-control" type="image" src="./trash.png" 
+			value="Excluir" formaction="emp_022.jsp" onclick="Apaga()"></td>
+    </tr>
+    
+<script>
+	                  
+	                  	function Apaga(){
+	                  		var resp = confirm("Deseja excluir esta vaga?");
+	                  		
+	                  		if(resp == true){
+	                  		    document.getElementById("formulario").action = "emp_022.jsp";
+
+	                  		}else{
+	                  			event.preventDefault ();
+	                  		}
+	                  	}
+	                  	
+	                  	function Editar(){
+
+	                  		var resp = confirm("Deseja Editar esta vaga?");
+	   
+	                  		if(resp == true){
+	                  			document.getElementById("formulario").action = "emp_021.jsp";
+
+
+	                  		}else{
+	                  			event.preventDefault ();
+	                  		}
+	                  	}
+	                 
+	                  </script>
+
 </form>
 <%} // fecha while
 	ps.execute();
@@ -137,14 +174,13 @@ while(rs.next()) {
 		out.println("Ocorreu uma exceção - " + e.getMessage());
 	}
 %>
-
-
+</tbody>
+</table></div>	
 
 <form action="index.jsp" method="get">
 <input type="submit" value="Voltar"></form>
-</div>
 
-	                  
+                  
 <!-- ---------------------------------------------------------------------------------------------------       -->
 <!--		JQUERY																							   -->
 <!-- ---------------------------------------------------------------------------------------------------       -->
@@ -167,5 +203,7 @@ while(rs.next()) {
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" 
 		integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" 
 		crossorigin="anonymous"></script>
+		
+
 </body>
 </html>

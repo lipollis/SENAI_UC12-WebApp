@@ -109,20 +109,21 @@ try{
 </nav>
 
 <!-- ---------------------------------------------------------------------------------------------------       -->
-<!--		FORMULÁRIO-->
+<!--		FORMULÁRIO																						   -->
 <!-- ---------------------------------------------------------------------------------------------------       -->
-<div align=center><h1>Sistema de Controle de Vagas de Emprego</h1></div>
-<div align=center><h3>Inclusão</h3></div>
+<div class="titulo">
+	<div align=center><h1>Sistema de Controle de Vagas de Emprego</h1></div>
+	<div align=center><h3>Inclusão</h3></div></div>
 
 <form action="index.jsp" method="get">
-	<div class=" "><span disabled name="id" > <%=id_html%> </span></div>
-	<div class=" "><span name="descricao"  > <%=descricao_html%> </span></div>
-	<div class=" "><span name="req_obrigatorios"  > <%=req_obrigatorios_html%> </span></div>
-	<div class=" "><span name="req_desejaveis" > <%=req_desejaveis_html%> </span></div>
-	<div class=" "><span name="remuneracao"  class="mask-real" size=8 style="text-align: right"> <%=remuneracao_html%> </span></div>
-	<div class=" "><span name="beneficios"  > <%=beneficios_html%> </span></div>
-	<div class=" "><span name="local_trabalho" > <%=local_trabalho_html%> </span></div>
-	<div class=" "><span name="aberta" id="radio-choice-1a" value="1"  /> <%=aberta_html%> </span></div>
+	<div class=" "><span disabled id="id" >  </span></div>
+	<div class=" "><span id="descricao"  > <%=descricao_html%> </span></div>
+	<div class=" "><span id="req_obrigatorios"  > <%=req_obrigatorios_html%> </span></div>
+	<div class=" "><span id="req_desejaveis" > <%=req_desejaveis_html%> </span></div>
+	<div class=" "><span id="remuneracao"  class="mask-real" size=8 style="text-align: right"> <%=remuneracao_html%> </span></div>
+	<div class=" "><span id="beneficios"  > <%=beneficios_html%> </span></div>
+	<div class=" "><span id="local_trabalho" > <%=local_trabalho_html%> </span></div>
+	<div class=" "><span id="aberta"> <%=aberta_html%> </span></div>
 	
 	<div class=" "><input type="submit" value="Voltar" class=" "></div>
 </form>

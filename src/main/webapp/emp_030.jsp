@@ -100,57 +100,59 @@ try {
 
 
 <!-- ---------------------------------------------------------------------------------------------------       -->
-<!--		FORMULÁRIO-->
+<!--		FORMULÁRIO																						   -->
 <!-- ---------------------------------------------------------------------------------------------------       -->
-<div align=center><h1>Sistema de Controle de Vagas de Emprego</h1></div>
-<div align=center><h3></h3></div>
+<div class="titulo">
+	<div align=center><h1>Sistema de Controle de Vagas de Emprego</h1></div>
+	<div align=center><h3> <%=titulo %> </h3></div></div>
 
-<div class=" ">
-	<div align=center><caption class="e02"><h3><%=titulo%></h3></caption></div>
-	<table class=" ">
-		<tr>
-			<th>Id vaga</th>
-			<th>Descricao</th>
-			<th>Requisitos Obrigatorios</th>
-			<th>Requisitos Desejaveis</th>
-			<th>Remuneracao</th>
-			<th>Beneficios</th>
-			<th>Local de Trabalho</th>
-			<th>Aberta</th>
-		</tr>
-	</table>	
+<div class="table-responsive ">
+	<table class="table table-hover">
+	<caption class="e02"> </caption>
+	<thead><tr  class="e01 table-secondary">
+			<th scope="col">Id vaga</th>
+			<th scope="col">Descricao</th>
+			<th scope="col">Requisitos Obrigatorios</th>
+			<th scope="col">Requisitos Desejaveis</th>
+			<th scope="col">Remuneracao</th>
+			<th scope="col">Beneficios</th>
+			<th scope="col">Local de Trabalho</th>
+			<th scope="col">Aberta</th>
+		</tr></thead>	
 <%
 int alt = 0;
 while(rs.next()) {
 	if(alt == 0) {%>
-
-
+	<tr bgcolor=snow class="e01">
 		<%alt = 1;
 		}  else{%>
+		  <tbody>
+		<tr bgcolor=ivory class="e01">
 		
-
 			<%alt = 0;}%>
-	<form action="index.jsp" method="get">
-		<td><input type="hidden" name="id" value="<%=rs.getInt("id")%>"><%=rs.getInt("id") %></td>
-		<td><input type="hidden" name="descricao" value="<%=rs.getString("descricao")%>"><%=rs.getString("descricao")%></td>
-		<td><input type="hidden" name="req_obrigatorios" value="<%=rs.getString("req_obrigatorios")%>"><%=rs.getString("req_obrigatorios")%></td>
-		<td><input type="hidden" name="req_desejaveis" value="<%=rs.getString("req_desejaveis")%>"><%=rs.getString("req_desejaveis")%></td>
-		<td style="text-align: right;"><input type="hidden" name="remuneracao" value="<%=df.format(rs.getFloat("remuneracao"))%>"><%=df.format(rs.getFloat("remuneracao"))%></td>
-		<td><input type="hidden" name="beneficios" value="<%=rs.getString("beneficios")%>"><%=rs.getString("beneficios")%></td>
-		<td><input type="hidden" name="local_trabalho" value="<%=rs.getString("local_trabalho")%>"><%=rs.getString("local_trabalho")%></td>
-		<td><input type="hidden" name="aberta" value="<%=rs.getInt("aberta")%>"><%=rs.getInt("aberta")%></td>
-	</form>
-	
+	<form class="form-floating" action="index.jsp" method="get" id="formulario">
+		<th scope="row" class="align-bottom"><input class="form-control" type="hidden" name="id" id="id" value="<%=rs.getInt("id")%>"><%=rs.getInt("id") %></th>
+		<td class="align-bottom"><input class="form-control" type="hidden" name="descricao" value="<%=rs.getString("descricao")%>"><%=rs.getString("descricao")%></td>
+		<td class="align-bottom"><input class="form-control" type="hidden" name="req_obrigatorios" value="<%=rs.getString("req_obrigatorios")%>"><%=rs.getString("req_obrigatorios")%></td>
+		<td class="align-bottom"><input class="form-control" type="hidden" name="req_desejaveis" value="<%=rs.getString("req_desejaveis")%>"><%=rs.getString("req_desejaveis")%></td>
+		<td class="align-bottom"><input class="form-control" type="hidden" name="remuneracao" value="<%=df.format(rs.getFloat("remuneracao"))%>"><%=df.format(rs.getFloat("remuneracao"))%></td>
+		<td class="align-bottom"><input class="form-control" type="hidden" name="beneficios" value="<%=rs.getString("beneficios")%>"><%=rs.getString("beneficios")%></td>
+		<td class="align-bottom"><input class="form-control" type="hidden" name="local_trabalho" value="<%=rs.getString("local_trabalho")%>"><%=rs.getString("local_trabalho")%></td>
+		<td class="align-bottom"><input class="form-control" type="hidden" name="aberta" value="<%=rs.getInt("aberta")%>"><%=rs.getInt("aberta")%></td>
 
-	<%
-		} // fecha while
-		ps.execute();
-		ps.close();
-		conn.close();
-		}catch(Exception e) {
-			out.println("Ocorreu uma exceção - " + e.getMessage());
-		}
-	%>
+	</tr>
+
+</form>
+<%} // fecha while
+	ps.execute();
+	ps.close();
+	conn.close();
+	}catch(Exception e) {
+		out.println("Ocorreu uma exceção - " + e.getMessage());
+	}
+%>
+</tbody>
+</table></div>	
 	
 	<form action="index.jsp" method="get">
 	<input type="submit" value="Voltar"></form>

@@ -123,10 +123,11 @@ try{
 
 
 <!-- ---------------------------------------------------------------------------------------------------       -->
-<!--		FORMULÁRIO-->
+<!--		FORMULÁRIO																						   -->
 <!-- ---------------------------------------------------------------------------------------------------       -->
-<div align=center><h1>Sistema de Controle de Vagas de Emprego</h1></div>
-<div align=center><h3>Alteração</h3></div>
+<div class="titulo">
+	<div align=center><h1>Sistema de Controle de Vagas de Emprego</h1></div>
+	<div align=center><h3>Alteração</h3></div></div>
 
 <form action="index.jsp" method="get">
 	<div class=" "><span disabled name="id" > <%=id_html%> </span></div>

@@ -86,10 +86,11 @@ try{
 
 
 <!-- ---------------------------------------------------------------------------------------------------       -->
-<!--		FORMULÁRIO-->
+<!--		FORMULÁRIO																						   -->
 <!-- ---------------------------------------------------------------------------------------------------       -->
-<div align=center><h1>Sistema de Controle de Vagas de Emprego</h1></div>
-<div align=center><h3>Exclusão</h3></div>
+<div class="titulo">
+	<div align=center><h1>Sistema de Controle de Vagas de Emprego</h1></div>
+	<div align=center><h3>Exclusão</h3></div></div>
 
 <form action="index.jsp" method="get">
 
