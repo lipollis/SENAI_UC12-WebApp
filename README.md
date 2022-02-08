@@ -20,7 +20,7 @@
 
 <div align="left">
   <p align="justify">
-  Aplicação WEB desenvolvida no Eclipse com Dynamic Web Project, com a construição o banco de dados e seus respectivos relacionamentos, codificar a conexão com a aplicação e construir os métodos de manutenção da tabela (inclusão, alteração, exclusão) além do módulo de consulta.
+  Aplicação WEB desenvolvida no Eclipse com Dynamic Web Project, com a construção do banco de dados e seus respectivos relacionamentos, codificar a conexão com a aplicação e construir os métodos de manutenção da tabela (inclusão, alteração, exclusão) além do módulo de consulta.
   
   </p>
 </div>
